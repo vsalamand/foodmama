@@ -15,5 +15,8 @@
   <li>November: <%= @ingredient.november %></li>
   <li>December: <%= @ingredient.december %></li>
 </ul>
-
+<%= link_to "Edit", edit_ingredient_path(@ingredient) %>
+<%= link_to "Destroy", ingredient_path(@ingredient),
+        method: :delete,
+        data: { confirm: "Are you sure?" }  %>
 <%= link_to "All ingredients", ingredients_path %>

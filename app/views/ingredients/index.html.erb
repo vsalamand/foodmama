@@ -5,6 +5,9 @@
       <%= cl_image_tag ingredient.photo, height: 50, width: 50, crop: :fill %>
       <%= link_to ingredient.name, ingredient_path(ingredient) %>
       <%= link_to "Edit", edit_ingredient_path(ingredient) %>
+      <%= link_to "Destroy", ingredient_path(ingredient),
+        method: :delete,
+        data: { confirm: "Are you sure?" }  %>
     </li>
   <% end %>
 
