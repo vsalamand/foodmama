@@ -1,4 +1,5 @@
 <h2><%= @ingredient.name %></h2>
+<%= cl_image_tag @ingredient.photo, height: 300, width: 300, crop: :fill %>
 <p>Seasons</p>
 <ul>
   <li>January: <%= @ingredient.january %></li>
