@@ -1,3 +1,7 @@
-<% @ingredients.each do |ingredient| %>
-  <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
-<% end %>
+<%= link_to "Create new ingredient", new_ingredient_path, class: "btn btn-primary"%>
+<div class="container">
+  <% @ingredients.each do |ingredient| %>
+    <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+  <% end %>
+
+</div>
