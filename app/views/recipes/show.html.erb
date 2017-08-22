@@ -1,21 +1,56 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
       <div class="title">
         <h1><%= @recipe.name %></h1>
+      </div>
+      <div class="photo-show">
         <%= cl_image_tag @recipe.photo, height: 400, width: 400, crop: :fill %>
+      </div>
+      <div class="recipe-ingredients">
+        <% @recipe.doses.each do |dose| %>
+        <p><%= dose.description %> <%= dose.ingredient.name %></p>
+        <% end %>
+      </div>
+
+      <div class="dose-form">
+        <%= simple_form_for [@recipe, @dose] do |f| %>
+          <%= f.input :description %>
+          <%= f.association :ingredient, placeholder: "Ingredient" ,label: false %>
+          <%= f.submit "Add Doses", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <div class="recipe-instructions">
         <p><%= @recipe.instructions %></p>
       </div>
-      <div class="dose-form">
-        <%= simple_form_for([@recipe, @dose]) do |f| %>
-        #<%= f.input :description %>
-        #<%= f.input :ingredient_id, collection: @ingredients %>
-        #<%= f.submit "Add Doses" class: "btn btn-primary" %>
-        #<% end %>
-        #<%= link_to 'Back', recipes_path %>
+
+      <div class="ingredient-form">
+        <%= simple_form_for(@ingredient) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :name %>
+            <%= f.input :january, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :february, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :march, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :april, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :may, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :june, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :july, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :august, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :september, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :october, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :november, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :december, collection: [0, 50, 100], as: :radio_buttons %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+          <div class="form-actions">
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
-    </div>
-  </div>
+
+      <%= link_to 'Back', recipes_path %>  </div>
 </div>
 
 
