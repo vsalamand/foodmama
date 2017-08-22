@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   resources :ingredients
 
+  resources :users, only: [:show] do
+    resources :past_recommendations, only: [:create, :destroy]
+  end
 end
 
 
