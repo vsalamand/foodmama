@@ -1,27 +1,38 @@
 <div class="container">
   <div class="row">
+    <div class="col-xs-12">
       <div class="recipe-title text-center">
         <h1><%= @recipe.name %></h1>
       </div>
-      <div class="recipe-head">
-        <div class="recipe-photo">
-          <%= cl_image_tag @recipe.photo, height: 400, width: 400, crop: :fill %>
-        </div>
-        <div class="recipe-ingredients">
-          <h2>Ingrédients</h2>
-          <% @recipe.doses.each do |dose| %>
-          <p><%= dose.description %> <%= dose.ingredient.name %></p>
-          <% end %>
-        </div>
+    </div>
 
-        <div class="dose-form form-inline">
-          <%= simple_form_for [@recipe, @dose] do |f| %>
-            <%= f.input :description, label: false, placeholder: "Description" %>
-            <%= f.association :ingredient,label: false %>
-            <%= f.submit "Add Doses", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+    <div class="recipe-head">
+      <div class="col-xs-12">
+        <div class="recipe-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_tag @recipe.photo %>')"></div>
+      </div>
 
+    <div class="col-xs-12 col-md-4">
+      <div class="recipe-ingredients">
+        <h2>Ingrédients</h2>
+        <% @recipe.doses.each do |dose| %>
+        <p><%= dose.description %> <%= dose.ingredient.name %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <div class="dose-form form-inline">
+        <%= simple_form_for [@recipe, @dose] do |f| %>
+          <%= f.input :description, label: false, placeholder: "Description" %>
+          <%= f.association :ingredient,label: false %>
+          <%= f.submit "Add Doses", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
         <div class="recipe-infos">
           <h3>Difficulté:</h3>
           <p><%= @recipe.difficulty %></p>
@@ -31,17 +42,21 @@
           <p><%= @recipe.cooking_time %></p>
           <h3>Pour: </h3>
           <p><%= @recipe.servings %> pers.</p>
-
         </div>
+    </div>
+  </div>
 
-      </div>
-
-
+  <div class="row">
+    <div class="col-xs-12">
       <div class="recipe-instructions">
         <h2>Préparation</h2>
         <p><%= @recipe.instructions %></p>
       </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-xs-12">
       <div class="ingredient-form ">
         <%= simple_form_for(@ingredient) do |f| %>
           <%= f.error_notification %>
@@ -66,8 +81,9 @@
             <%= f.submit "Submit", class: "btn btn-primary" %>
           </div>
         <% end %>
+      </div>
     </div>
-  <%= link_to 'Back', recipes_path %>  </div>
+  </div>
 </div>
 
 
