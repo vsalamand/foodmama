@@ -1,5 +1,4 @@
-.recipes {
-  background-color: white;
+.div-center {
   width: 700px;
   margin-left: 220px;
 
@@ -16,7 +15,7 @@
 
 }
 
-.image {
+.pic{
 
   flex: 0 0 10%;
   height: 60px;
@@ -56,4 +55,6 @@
   z-index: 1;
   width: 700px;
   border: 1px solid lightgrey;
+  background-color: white;
+  opacity: 0.3;
 }
