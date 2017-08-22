@@ -23,6 +23,6 @@ class IngredientsController < ApplicationController
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december)
+    params.require(:ingredient).permit(:name, :january, :february, :march, :april, :may, :june, :july, :august, :september, :october, :november, :december, :photo, :photo_cache)
   end
 end
