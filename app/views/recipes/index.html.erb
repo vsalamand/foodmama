@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <div class="row"></div>
+    <div class="recipes">
+      <% @recipes.each do |recipe| %>
+        <div class="card">
+          <div class="image " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recipe.photo, crop: :fill %>')">
+          </div>
+          <div class="card-name"><%= recipe.name %></div>
+          <div class="card-edit">
+            <%= link_to edit_recipe_path(recipe) do %>
+              <i class="fa fa-pencil fa-fw"></i>
+            <% end %>
+          </div>
+          <div class="card-delete">
+            <%= link_to recipe_path(recipe), method: :delete do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
+          <%= link_to "", recipe_path(recipe), class: "absolute-link" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
