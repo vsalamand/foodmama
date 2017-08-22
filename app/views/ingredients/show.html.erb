@@ -1,0 +1,22 @@
+<h2><%= @ingredient.name %></h2>
+<%= cl_image_tag @ingredient.photo, height: 300, width: 300, crop: :fill %>
+<p>Seasons</p>
+<ul>
+  <li>January: <%= @ingredient.january %></li>
+  <li>February: <%= @ingredient.february %></li>
+  <li>March: <%= @ingredient.march %></li>
+  <li>April: <%= @ingredient.april %></li>
+  <li>May: <%= @ingredient.may %></li>
+  <li>June: <%= @ingredient.june %></li>
+  <li>July: <%= @ingredient.july %></li>
+  <li>August: <%= @ingredient.august %></li>
+  <li>September: <%= @ingredient.september %></li>
+  <li>October: <%= @ingredient.october %></li>
+  <li>November: <%= @ingredient.november %></li>
+  <li>December: <%= @ingredient.december %></li>
+</ul>
+<%= link_to "Edit", edit_ingredient_path(@ingredient) %>
+<%= link_to "Destroy", ingredient_path(@ingredient),
+        method: :delete,
+        data: { confirm: "Are you sure?" }  %>
+<%= link_to "All ingredients", ingredients_path %>

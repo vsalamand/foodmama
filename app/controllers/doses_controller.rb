@@ -39,7 +39,6 @@ end
 
 
 
-
 # afficher la liste des doses dans la show de recipes
  #</ul>
 #<% @recipe.doses.each do |dose| %>

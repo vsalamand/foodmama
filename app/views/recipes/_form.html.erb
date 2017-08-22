@@ -1,0 +1,22 @@
+<%= simple_form_for(@recipe) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :instructions%>
+    <%= f.input :cooking_time%>
+    <%= f.input :preparation_time %>
+    <%= f.input :difficulty %>
+    <%= f.input :type %>
+    <%= f.input :vegan %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
