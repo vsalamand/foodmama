@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <%= simple_form_for(@ingredient) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :january, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :february, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :march, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :april, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :may, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :june, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :july, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :august, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :september, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :october, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :november, collection: [0, 50, 100], selected: 0 %>
+          <%= f.input :december, collection: [0, 50, 100], selected: 0 %>
+          <%= f.submit "Create ingredient", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
