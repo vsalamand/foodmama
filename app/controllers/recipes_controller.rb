@@ -33,6 +33,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
   def recipe_params
-    params.require(:recipe).permit(:name)
+    params.require(:recipe).permit(:name, :photo, :photo_cache)
   end
 end
