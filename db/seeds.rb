@@ -1,11 +1,12 @@
 require 'open-uri'
 require 'nokogiri'
 require 'json'
+require_relative '../app/models/ingredient'
 
 # CREATING INGREDIENT JSON
+filepath = "ingredients.json"
 # url_base = "http://www.lesfruitsetlegumesfrais.com"
 # url = "#{url_base}/fruits-legumes/liste?fp1=&fp2="
-# filepath = "ingredients.json"
 
 # html_file = open(url).read
 # html_doc = Nokogiri::HTML(html_file)
@@ -58,3 +59,27 @@ require 'json'
 #   file.write(JSON.generate(ingredients))
 # end
 
+serialized_ingredients = File.read(filepath)
+
+ingredients = JSON.parse(serialized_ingredients)
+
+ingredients["ingredients"].each do |ingredient|
+  ingredient_temp = Ingredient.new
+  ingredient_temp.name = ingredient["name"]
+  ingredient_temp.remote_photo_url = ingredient["photo_url"]
+
+  ingredient_temp.january   = ingredient["january"]
+  ingredient_temp.february  = ingredient["february"]
+  ingredient_temp.march     = ingredient["march"]
+  ingredient_temp.april     = ingredient["april"]
+  ingredient_temp.may       = ingredient["may"]
+  ingredient_temp.june      = ingredient["june"]
+  ingredient_temp.july      = ingredient["july"]
+  ingredient_temp.august    = ingredient["august"]
+  ingredient_temp.september = ingredient["september"]
+  ingredient_temp.october   = ingredient["october"]
+  ingredient_temp.november  = ingredient["november"]
+  ingredient_temp.december  = ingredient["december"]
+
+  ingredient_temp.save
+end
