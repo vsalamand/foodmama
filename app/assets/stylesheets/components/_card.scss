@@ -1,0 +1,59 @@
+.recipes {
+  background-color: white;
+  width: 700px;
+  margin-left: 220px;
+
+
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1 solid lightgrey;
+  width: 700px;
+  margin-bottom: 10px;
+
+}
+
+.image {
+
+  flex: 0 0 10%;
+  height: 60px;
+  width: 60px;
+  background-size: cover !important;
+  background-position: center;
+}
+
+.card-name {
+
+  flex: 0 0 60%;
+  padding-left: 15px;
+}
+
+.card-edit {
+  position: relative;
+  flex: 0 0 15%;
+  i.fa {
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+.card-delete {
+  position: relative;
+  flex: 0 0 15%;
+  i.fa {
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+
+.absolute-link {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 1;
+  width: 700px;
+  border: 1px solid lightgrey;
+}
