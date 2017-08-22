@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update]
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   def index
     @ingredients = Ingredient.all
@@ -31,6 +31,11 @@ class IngredientsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @ingredient.destroy
+    redirect_to ingredients_path
   end
 
   private
