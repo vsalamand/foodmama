@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822104614) do
+ActiveRecord::Schema.define(version: 20170822132445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,20 +27,20 @@ ActiveRecord::Schema.define(version: 20170822104614) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
-    t.integer  "january"
-    t.integer  "february"
-    t.integer  "march"
-    t.integer  "april"
-    t.integer  "may"
-    t.integer  "june"
-    t.integer  "july"
-    t.integer  "august"
-    t.integer  "september"
-    t.integer  "october"
-    t.integer  "november"
-    t.integer  "december"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "january",    default: 100
+    t.integer  "february",   default: 100
+    t.integer  "march",      default: 100
+    t.integer  "april",      default: 100
+    t.integer  "may",        default: 100
+    t.integer  "june",       default: 100
+    t.integer  "july",       default: 100
+    t.integer  "august",     default: 100
+    t.integer  "september",  default: 100
+    t.integer  "october",    default: 100
+    t.integer  "november",   default: 100
+    t.integer  "december",   default: 100
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "photo"
   end
 
