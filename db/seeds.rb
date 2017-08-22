@@ -81,5 +81,5 @@ ingredients["ingredients"].each do |ingredient|
   ingredient_temp.november  = ingredient["november"]
   ingredient_temp.december  = ingredient["december"]
 
-  ingredient_temp.save
+  ingredient_temp.save unless ingredient_temp.name == "Fruits exotiques"
 end
