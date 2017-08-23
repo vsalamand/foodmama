@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   has_many :doses
   has_many :past_recommendations
+  acts_as_votable
 
   mount_uploader :photo, PhotoUploader
 
@@ -34,9 +35,13 @@ class Recipe < ApplicationRecord
     end
   end
 
-   def validate_diet_list
+  def validate_diet_list
     diet_list.each do |diet|
       record.errors[:diet_list] << 'Not available!' unless DIETS.include? diet
     end
+  end
+
+  def score
+    self.get_upvotes.size - self.get_downvotes.size
   end
 end

@@ -6,14 +6,28 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :doses, only: [:new, :create, :edit, :update, :destroy]
+    member do
+      put "like", to: "recipes#upvote"
+      put "dislike", to: "recipes#downvote"
+    end
   end
 
-  resources :ingredients
+  resources :ingredients do
+    member do
+      put "like", to: "ingredients#upvote"
+      put "dislike", to: "ingredients#downvote"
+    end
+  end
 
   resources :users, only: [:show] do
     resources :past_recommendations, only: [:create, :destroy]
   end
+
+
 end
+
+
+
 
 
 

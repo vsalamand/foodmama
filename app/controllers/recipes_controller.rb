@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:show, :edit, :destroy]
+    before_action :set_recipe, only: [:show, :edit, :destroy, :upvote, :downvote]
 
   def index
     @recipes = Recipe.all
@@ -34,6 +34,16 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
      redirect_to recipes_path
+  end
+
+  def upvote
+    @recipe.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @recipe.downvote_by current_user
+    redirect_to :back
   end
 
   private
