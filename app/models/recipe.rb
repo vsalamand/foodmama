@@ -9,14 +9,14 @@ class Recipe < ApplicationRecord
   validates :instructions, :servings, presence: true
 
   DIFFICULTIES = ["Très facile", "Facile", "Moyen", "Difficile"]
-  validates :difficulty, inclusion: { :in => DIFFICULTIES }
+  # validates :difficulty, inclusion: { :in => DIFFICULTIES }
 
   #permet de créer des listes de tags avec la gem act_as_taggable
   acts_as_taggable_on :seasons, :recipe_types, :diets
   #valide qu'un tag est présent dans :recipe_types
-  validates :recipe_type_list, presence: true
+  # validates :recipe_type_list, presence: true
   #valide que chaque tag ajouté existe dans la constante
-  validate :validate_recipe_type, :validate_season_list
+  # validate :validate_recipe_type, :validate_season_list
 
   RECIPE_TYPES = ["Apéritif", "Entrée", "Plat", "Accompagnement", "Dessert", "Boisson", "Petit-déjeuner", "Snack"]
   SEASONS = ["Printemps", "Eté", "Automne", "Hiver"]
