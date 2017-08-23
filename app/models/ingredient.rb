@@ -1,5 +1,6 @@
 class Ingredient < ApplicationRecord
   has_many :doses
+  acts_as_votable
 
   validates :name, presence: true, uniqueness: true
 
@@ -17,4 +18,8 @@ class Ingredient < ApplicationRecord
   validates :december, presence: true, inclusion: { :in => [0, 50, 100] }
 
   mount_uploader :photo, PhotoUploader
+
+  def score
+    self.get_upvotes.size - self.get_downvotes.size
+  end
 end

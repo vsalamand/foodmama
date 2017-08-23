@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :score]
 
   def index
     @ingredients = Ingredient.all
@@ -36,6 +36,16 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient.destroy
     redirect_to ingredients_path
+  end
+
+  def upvote
+    @ingredient.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @ingredient.downvote_by current_user
+    redirect_to :back
   end
 
   private

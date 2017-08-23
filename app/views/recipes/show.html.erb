@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+      <%= link_to like_recipe_path(@recipe), method: :put do %>
+      Upvote
+      <%= @recipe.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_recipe_path(@recipe), method: :put do %>
+        Downvote
+        <%= @recipe.get_downvotes.size %>
+      <% end %>
       <div class="recipe-title text-center">
         <h1><%= @recipe.name %></h1>
       </div>

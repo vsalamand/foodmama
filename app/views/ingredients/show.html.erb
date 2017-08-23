@@ -1,3 +1,14 @@
+<%= link_to like_ingredient_path(@ingredient), method: :put do %>
+  Upvote
+  <%= @ingredient.get_upvotes.size %>
+<% end %>
+
+<%= link_to dislike_ingredient_path(@ingredient), method: :put do %>
+  Downvote
+  <%= @ingredient.get_downvotes.size %>
+<% end %>
+
+
 <h2><%= @ingredient.name %></h2>
 <%= cl_image_tag @ingredient.photo, height: 300, width: 300, crop: :fill %>
 <p>Seasons</p>
