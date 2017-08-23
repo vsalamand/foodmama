@@ -11,6 +11,9 @@ gem 'redis'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'omniauth-facebook'
+gem 'chosen-rails'
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
