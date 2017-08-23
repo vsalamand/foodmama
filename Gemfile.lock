@@ -101,10 +101,10 @@ GEM
       sass (>= 3.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    hashie (3.5.6)
     haml (5.0.2)
       temple (>= 0.8.0)
       tilt
+    hashie (3.5.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
