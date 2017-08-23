@@ -1,42 +1,42 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :score]
 
-  def index
-    @ingredients = Ingredient.all
-  end
+  # def index
+  #   @ingredients = Ingredient.all
+  # end
 
   def show
   end
 
-  def new
-    @ingredient = Ingredient.new
-  end
+  # def new
+  #   @ingredient = Ingredient.new
+  # end
 
-  def create
-    @ingredient = Ingredient.new(ingredient_params)
-    if @ingredient.save
-      redirect_to :back
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @ingredient = Ingredient.new(ingredient_params)
+  #   if @ingredient.save
+  #     redirect_to :back
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    @ingredient.update(ingredient_params)
-    if @ingredient.save
-      redirect_to ingredient_path(@ingredient)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @ingredient.update(ingredient_params)
+  #   if @ingredient.save
+  #     redirect_to ingredient_path(@ingredient)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @ingredient.destroy
-    redirect_to ingredients_path
-  end
+  # def destroy
+  #   @ingredient.destroy
+  #   redirect_to ingredients_path
+  # end
 
   def upvote
     @ingredient.upvote_by current_user
