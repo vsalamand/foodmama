@@ -1,0 +1,10 @@
+<% if @dose.errors.any? %>
+  // Render new dose form with errors
+  const container = document.querySelector('#dose-form-container');
+  container.innerHTML = '<%= j render "recipes/dose_form", recipe: @recipe, dose: @dose %>'
+<% else %>
+  const list = document.getElementById("dose-list");
+  list.insertAdjacentHTML("beforeend", "<li><%= @dose.description %> <%= @dose.ingredient.name %></li>");
+<% end %>
+
+

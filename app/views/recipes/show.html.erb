@@ -15,33 +15,30 @@
     </div>
 
     <div class="recipe-head">
+  <div class="row">
       <div class="col-xs-12">
         <div class="recipe-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
       </div>
 
-    <div class="col-xs-12 col-md-4">
-      <div class="recipe-ingredients">
-        <h2>Ingrédients</h2>
-        <% @recipe.doses.each do |dose| %>
-        <p><%= dose.description %> <%= dose.ingredient.name %></p>
-        <% end %>
+      <div class="col-xs-12">
+        <div class="dose-form form-inline text-center" id="dose-form-container">
+          <%= render 'dose_form', recipe: @recipe, dose: @dose %>
+        </div>
       </div>
-    </div>
 
-    <div class="col-xs-12 col-md-4">
-      <div class="dose-form form-inline">
-        <%= simple_form_for [@recipe, @dose] do |f| %>
-          <%= f.input :description, label: false, placeholder: "Description" %>
-          <%= f.association :ingredient,label: false %>
-          <%= f.submit "Add Doses", class: "btn btn-primary" %>
-        <% end %>
+      <div class="col-xs-12 col-md-6">
+        <div class="recipe-ingredients lis-unstyled">
+          <h2>Ingrédients</h2>
+          <ul id="dose-list">
+            <% @recipe.doses.each do |dose| %>
+            <li><%= dose.description %> <%= dose.ingredient.name %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12">
+      <div class="col-xs-12 col-md-6">
         <div class="recipe-infos">
           <h3>Difficulté:</h3>
           <p><%= @recipe.difficulty %></p>
@@ -52,6 +49,7 @@
           <h3>Pour: </h3>
           <p><%= @recipe.servings %> pers.</p>
         </div>
+      </div>
     </div>
   </div>
 
