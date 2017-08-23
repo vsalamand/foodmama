@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
-  has_many :doses
-  has_many :past_recommendations
+  has_many :doses, dependent: :destroy
+  has_many :past_recommendations, dependent: :destroy
+
   acts_as_votable
 
   mount_uploader :photo, PhotoUploader

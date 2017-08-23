@@ -3,7 +3,7 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless current_user && current_user.admin
   end
 
-  config.excluded_models << Dose
+  # config.excluded_models << Dose
 
   ### Popular gems integration
 
