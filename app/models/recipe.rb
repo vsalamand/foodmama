@@ -24,19 +24,19 @@ class Recipe < ApplicationRecord
   #méthodes custom de validation des tags
   def validate_season_list
     season_list.each do |season|
-      record.errors[:season_list] << 'Not available!' unless SEASONS.include? season
+      errors.add(:season_list, "Season tag not available!") unless SEASONS.include? season
     end
   end
 
   def validate_recipe_type
     recipe_type_list.each do |type|
-      record.errors[:recipe_type_list] << 'Not available!' unless RECIPE_TYPES.include? type
+      errors.add(:recipe_type_list, "Recipe type tag not available!") unless RECIPE_TYPES.include? type
     end
   end
 
    def validate_diet_list
     diet_list.each do |diet|
-      record.errors[:diet_list] << 'Not available!' unless DIETS.include? diet
+      errors.add(:diet_list, "Diet tag not available!") unless DIETS.include? diet
     end
   end
 end
