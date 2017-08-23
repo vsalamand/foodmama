@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823091640) do
+ActiveRecord::Schema.define(version: 20170823124552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,22 @@ ActiveRecord::Schema.define(version: 20170823091640) do
     t.integer  "preparation_time"
     t.string   "difficulty"
     t.integer  "servings"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "photo"
+    t.boolean  "vegan",            default: false, null: false
+    t.boolean  "aperitif",         default: false, null: false
+    t.boolean  "entree",           default: false, null: false
+    t.boolean  "plat",             default: false, null: false
+    t.boolean  "accompagnement",   default: false, null: false
+    t.boolean  "dessert",          default: false, null: false
+    t.boolean  "boisson",          default: false, null: false
+    t.boolean  "petitdejeuner",    default: false, null: false
+    t.boolean  "snack",            default: false, null: false
+    t.boolean  "printemps",        default: false, null: false
+    t.boolean  "ete",              default: false, null: false
+    t.boolean  "automne",          default: false, null: false
+    t.boolean  "hiver",            default: false, null: false
   end
 
   create_table "taggings", force: :cascade do |t|

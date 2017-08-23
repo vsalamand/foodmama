@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
     new
     export
     bulk_delete
-    # show
+    show
     edit
     delete
     show_in_app
