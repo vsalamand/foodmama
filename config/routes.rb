@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :ingredients, only: [:show] do
+  resources :ingredients, only: [:index, :show] do
     member do
       put "like", to: "ingredients#upvote"
       put "dislike", to: "ingredients#downvote"
