@@ -3,13 +3,15 @@ class Recipe < ApplicationRecord
   has_many :past_recommendations, dependent: :destroy
 
   acts_as_votable
+  # pour la gem like et dislike
 
   mount_uploader :photo, PhotoUploader
 
   validates :name, presence: true, uniqueness: true
   validates :instructions, :servings, presence: true
 
-  DIFFICULTIES = ["Très facile", "Facile", "Moyen", "Difficile"]
+  # DIFFICULTIES = ["Très facile", "Facile", "Moyen", "Difficile"]
+  #commenté pour supprimer la validation de la présence
   # validates :difficulty, inclusion: { :in => DIFFICULTIES }
 
   #permet de créer des listes de tags avec la gem act_as_taggable
