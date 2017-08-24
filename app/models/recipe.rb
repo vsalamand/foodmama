@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   has_many :doses, dependent: :destroy
   has_many :past_recommendations, dependent: :destroy
+  has_many :ingredients, through: :doses
 
   acts_as_votable
 
@@ -44,5 +45,9 @@ class Recipe < ApplicationRecord
 
   def score
     self.get_upvotes.size - self.get_downvotes.size
+  end
+
+  def self.search(query)
+    joins(:ingredients).where("ingredients.name ILIKE :query OR recipes.name ILIKE :query OR recipes.instructions ILIKE :query", query: "%#{query}%")
   end
 end

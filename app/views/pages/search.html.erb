@@ -1,0 +1,14 @@
+<%= form_tag(search_path, :method => "get") do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Search Recipes", required: true %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% if @search %>
+  <% if @search.empty? %>
+    <h4>There are no recipes </h4>
+  <% else %>
+    <% @search.each do |recipe|%>
+      <%= recipe.name %>
+    <% end %>
+  <% end %>
+<% end %>
