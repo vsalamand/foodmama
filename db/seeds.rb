@@ -97,7 +97,7 @@ recipes.each do |recipe|
   recipe_temp.ete = recipe["ete"] == "true"
   recipe_temp.automne = recipe["automne"] == "true"
   recipe_temp.hiver = recipe["hiver"] == "true"
-  recipe_temp.id = recipe["id"]
+  # recipe_temp.id = recipe["id"]
 
   recipe_temp.save
 end
@@ -112,8 +112,8 @@ ingredients = JSON.parse(serialized_ingredients)
 ingredients.each do |ingredient|
   ingredient_temp = Ingredient.new
   ingredient_temp.name = ingredient["name"]
-  ingredient_temp.remote_photo_url = ingredient["photo"]["photo"]["url"]
-  ingredient_temp.id = ingredient["id"]
+  ingredient_temp.remote_photo_url = ingredient["photo_url"]
+  # ingredient_temp.id = ingredient["id"]
 
   ingredient_temp.january   = ingredient["january"]
   ingredient_temp.february  = ingredient["february"]
@@ -134,18 +134,18 @@ end
 
 #seed des doses
 
-serialized_doses = File.read(doses_path)
+# serialized_doses = File.read(doses_path)
 
-doses = JSON.parse(serialized_doses)
-doses.each do |dose|
-  dose_temp = Dose.new
-  dose_temp.description = dose["description"]
-  dose_temp.ingredient_id = dose["ingredient"]["id"]
-  dose_temp.recipe_id = dose["recipe"]["id"]
-  dose_temp.complement = dose["complement"]
-  dose_temp.ingredient = Ingredient.find(dose_temp.ingredient_id)
-  dose_temp.recipe = Recipe.find(dose_temp.recipe_id)
+# doses = JSON.parse(serialized_doses)
+# doses.each do |dose|
+#   dose_temp = Dose.new
+#   dose_temp.description = dose["description"]
+#   dose_temp.ingredient_id = dose["ingredient"]["id"]
+#   dose_temp.recipe_id = dose["recipe"]["id"]
+#   dose_temp.complement = dose["complement"]
+#   dose_temp.ingredient = Ingredient.find(dose_temp.ingredient_id)
+#   dose_temp.recipe = Recipe.find(dose_temp.recipe_id)
 
-  dose_temp.save
-end
+#   dose_temp.save
+# end
 
