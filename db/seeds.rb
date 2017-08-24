@@ -83,7 +83,7 @@ recipes.each do |recipe|
   recipe_temp.preparation_time = recipe["preparation_time"].to_i
   recipe_temp.difficulty = recipe["difficulty"].to_i
   recipe_temp.servings = recipe["servings"].to_i
-  recipe_temp.remote_photo_url = recipe["photo"]["photo"]["url"]
+  recipe_temp.remote_photo_url = "https://upload.wikimedia.org/wikipedia/commons/1/14/Pot_au_feu2.jpg" #recipe["photo"]["photo"]["url"]
   recipe_temp.vegan = recipe["vegan"] == "true"
   recipe_temp.aperitif= recipe["aperitif"] == "true"
   recipe_temp.entree = recipe["entree"] == "true"
@@ -109,7 +109,7 @@ serialized_ingredients = File.read(ingredient_path)
 
 ingredients = JSON.parse(serialized_ingredients)
 
-ingredients.each do |ingredient|
+ingredients["ingredients"].each do |ingredient|
   ingredient_temp = Ingredient.new
   ingredient_temp.name = ingredient["name"]
   ingredient_temp.remote_photo_url = ingredient["photo_url"]
