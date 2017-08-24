@@ -1,0 +1,5 @@
+class AddComplementToDoses < ActiveRecord::Migration[5.0]
+  def change
+    add_column :doses, :complement, :string
+  end
+end
