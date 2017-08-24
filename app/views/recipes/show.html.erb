@@ -23,28 +23,6 @@
          url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="recipe-infos">
-        <div>
-          <h3>Difficulté:</h3>
-          <p><%= @recipe.difficulty %></p>
-        </div>
-        <div>
-          <h3>Temps de préparation:</h3>
-          <p><%= @recipe.preparation_time %></p>
-        </div>
-        <div>
-          <h3>Temps de cuisson: </h3>
-          <p><%= @recipe.cooking_time %></p>
-        </div>
-        <div>
-          <h3>Pour: </h3>
-          <p><%= @recipe.servings %> pers.</p>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <% if  current_user.admin %>
         <div class="col-xs-12">
@@ -58,9 +36,10 @@
       <div class="col-xs-12 col-md-4">
         <div class="recipe-ingredients lis-unstyled">
           <h2>Ingrédients</h2>
+          <h4>Pour: <%= @recipe.servings %> pers. </h4>
           <ul id="dose-list">
             <% @recipe.doses.each do |dose| %>
-              <li><%= dose.description %> <%= dose.ingredient.name %></li>
+              <li><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></li>
             <% end %>
           </ul>
         </div>

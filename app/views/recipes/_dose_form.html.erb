@@ -1,5 +1,6 @@
 <%= simple_form_for([recipe, dose], remote: true, method: 'post') do |f| %>
-  <%= f.input :description, label: false, placeholder: "Description" %>
+  <%= f.input :description, label: false, placeholder: "Quantity" %>
   <%= f.association :ingredient,label: false %>
+  <%= f.input :complement, label: false, placeholder: "Complement" %>
   <%= f.submit "Add Doses", class: "btn btn-primary" %>
 <% end %>

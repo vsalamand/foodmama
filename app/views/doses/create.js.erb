@@ -4,7 +4,7 @@
   container.innerHTML = '<%= j render "recipes/dose_form", recipe: @recipe, dose: @dose %>'
 <% else %>
   const list = document.getElementById("dose-list");
-  list.insertAdjacentHTML("beforeend", "<li><%= @dose.description %> <%= @dose.ingredient.name %></li>");
+  list.insertAdjacentHTML("beforeend", "<li><%= @dose.description %> <%= @dose.ingredient.name %> <%= @dose.complement %> </li>");
 <% end %>
 
 
