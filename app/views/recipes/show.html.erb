@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="row">
     <div class="col-xs-12">
       <%= link_to like_recipe_path(@recipe), method: :put do %>
@@ -13,84 +14,66 @@
         <h1><%= @recipe.name %></h1>
       </div>
     </div>
-
-    <div class="recipe-head">
-      <div class="col-xs-12">
-        <div class="recipe-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_tag @recipe.photo %>')"></div>
-      </div>
-
-    <div class="col-xs-12 col-md-4">
-      <div class="recipe-ingredients">
-        <h2>Ingrédients</h2>
-        <% @recipe.doses.each do |dose| %>
-        <p><%= dose.description %> <%= dose.ingredient.name %></p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <div class="dose-form form-inline">
-        <%= simple_form_for [@recipe, @dose] do |f| %>
-          <%= f.input :description, label: false, placeholder: "Description" %>
-          <%= f.association :ingredient,label: false %>
-          <%= f.submit "Add Doses", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-        <div class="recipe-infos">
+  <div class="recipe-head">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="recipe-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="recipe-infos">
+        <div>
           <h3>Difficulté:</h3>
           <p><%= @recipe.difficulty %></p>
+        </div>
+        <div>
           <h3>Temps de préparation:</h3>
           <p><%= @recipe.preparation_time %></p>
+        </div>
+        <div>
           <h3>Temps de cuisson: </h3>
           <p><%= @recipe.cooking_time %></p>
+        </div>
+        <div>
           <h3>Pour: </h3>
           <p><%= @recipe.servings %> pers.</p>
         </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="recipe-instructions">
-        <h2>Préparation</h2>
-        <p><%= @recipe.instructions %></p>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="ingredient-form ">
-        <%= simple_form_for(@ingredient) do |f| %>
-          <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.input :name, label: false, placeholder: "Nom de l'ingredient"%>
-            <%= f.input :january, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :february, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :march, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :april, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :may, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :june, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :july, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :august, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :september, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :october, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :november, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :december, collection: [0, 50, 100], as: :radio_buttons %>
-            <%= f.input :photo %>
-            <%= f.input :photo_cache, as: :hidden %>
+    <div class="row">
+      <% if  current_user.admin %>
+        <div class="col-xs-12">
+          <div class="dose-form form-inline text-center" id="dose-form-container">
+            <%= render 'dose_form', recipe: @recipe, dose: @dose %>
           </div>
-          <div class="form-actions">
-            <%= f.submit "Submit", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="recipe-ingredients lis-unstyled">
+          <h2>Ingrédients</h2>
+          <ul id="dose-list">
+            <% @recipe.doses.each do |dose| %>
+              <li><%= dose.description %> <%= dose.ingredient.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-8">
+        <div class="recipe-instructions">
+          <h2>Préparation</h2>
+          <p><%= @recipe.instructions %></p>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
 

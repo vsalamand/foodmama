@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170823091640) do
-
+ActiveRecord::Schema.define(version: 20170823130041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,9 +61,22 @@ ActiveRecord::Schema.define(version: 20170823091640) do
     t.integer  "preparation_time"
     t.string   "difficulty"
     t.integer  "servings"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "photo"
+    t.boolean  "vegan",            default: false, null: false
+    t.boolean  "aperitif",         default: false, null: false
+    t.boolean  "entree",           default: false, null: false
+    t.boolean  "plat",             default: false, null: false
+    t.boolean  "accompagnement",   default: false, null: false
+    t.boolean  "dessert",          default: false, null: false
+    t.boolean  "boisson",          default: false, null: false
+    t.boolean  "petitdejeuner",    default: false, null: false
+    t.boolean  "snack",            default: false, null: false
+    t.boolean  "printemps",        default: false, null: false
+    t.boolean  "ete",              default: false, null: false
+    t.boolean  "automne",          default: false, null: false
+    t.boolean  "hiver",            default: false, null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -104,15 +115,16 @@ ActiveRecord::Schema.define(version: 20170823091640) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false, null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
     t.string   "token"
     t.datetime "token_expiry"
-    t.boolean  "admin",                  default: false, null: false
-
+    t.string   "first_name"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

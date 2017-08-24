@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="div-center">
+      <h5>Mama propose:</h5>
+    </div>
+    <div class="div-center">
+      <% @recipes.each_with_index do |recipe, index| %>
+        <div class="card">
+          <div class="card-name">
+            <%= index + 1 %>. <%= recipe.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="div-center">
+      <% @recipes.each_with_index do |recipe, index| %>
+        <div class="card">
+          <div class="card-name">
+            <%= link_to "voir #{recipe.name}", recipe_path(recipe) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="div-center">
+      <%= link_to "Autres suggestions", suggest_path %>
+    </div>
+  </div>
+</div>

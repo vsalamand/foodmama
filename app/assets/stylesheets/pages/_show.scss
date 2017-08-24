@@ -4,19 +4,29 @@
 
 .recipe-photo {
   height: 300px;
+  padding: 10px 0px;
 }
 
 .recipe-ingredients {
-  border-bottom: 1px solid lightgrey;
   padding: 10px 0px;
 }
 
 .dose-form {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px dashed lightgrey;
+  padding: 10px 0px;
+}
+
+.recipe-infos {
+  display: flex;
+  h3, p {
+    margin: 0;
+  }
+  justify-content: space-around;
+  border-bottom: 1px dashed lightgrey;
   padding: 10px 0px;
 }
 
 .recipe-instructions {
   height: 200px;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px dashed lightgrey;
 }

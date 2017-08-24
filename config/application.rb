@@ -28,3 +28,8 @@ module Foodmama
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+class Application < Rails::Application
+  config.action_view.embed_authenticity_token_in_remote_forms = true
+  # [...]
+end

@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def suggest
+    @recipes = Recipe.all.shuffle.take(2)
+  end
 end
