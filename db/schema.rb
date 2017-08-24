@@ -117,12 +117,12 @@ ActiveRecord::Schema.define(version: 20170823130041) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false, null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
     t.string   "token"
     t.datetime "token_expiry"
+    t.boolean  "admin",                  default: false, null: false
     t.string   "first_name"
     t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
