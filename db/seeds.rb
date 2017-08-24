@@ -5,7 +5,7 @@ require_relative '../app/models/ingredient'
 
 # CREATING INGREDIENT JSON
 # filepath = "ingredients.json"
-ingredient_path = "db/ingredients.json"
+ingredient_path = "ingredients.json"
 recipes_path = "db/recipes.json"
 doses_path = "db/doses.json"
 # url_base = "http://www.lesfruitsetlegumesfrais.com"
@@ -83,7 +83,7 @@ recipes.each do |recipe|
   recipe_temp.preparation_time = recipe["preparation_time"].to_i
   recipe_temp.difficulty = recipe["difficulty"].to_i
   recipe_temp.servings = recipe["servings"].to_i
-  recipe_temp.photo = recipe["photo"]
+  recipe_temp.remote_photo_url = recipe["photo"]["photo"]["url"]
   recipe_temp.vegan = recipe["vegan"] == "true"
   recipe_temp.aperitif= recipe["aperitif"] == "true"
   recipe_temp.entree = recipe["entree"] == "true"
@@ -112,7 +112,7 @@ ingredients = JSON.parse(serialized_ingredients)
 ingredients.each do |ingredient|
   ingredient_temp = Ingredient.new
   ingredient_temp.name = ingredient["name"]
-  ingredient_temp.remote_photo_url = ingredient["photo_url"]
+  ingredient_temp.remote_photo_url = ingredient["photo"]["photo"]["url"]
   ingredient_temp.id = ingredient["id"]
 
   ingredient_temp.january   = ingredient["january"]
