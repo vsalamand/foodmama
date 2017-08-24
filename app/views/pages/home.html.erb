@@ -1,37 +1,75 @@
-
 <div class="wrapper">
-  <div class="banner">
+  <!-- <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+  <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <img src="" alt="logo">
+      <div class="col-md-6 col-xs-12 col-sm-12">
+        <h1>Mama</h1>
+        <h2>Demande-moi ton futur repas</h2>
+        <#% messenger_url = "https://m.me/foodmama.fr"  %>
+        <#%= link_to "Essayer Mama sur Messenger", messenger_url, target:"_blank", class:"fb-msg-btn" %>
+        <i class="fa fa-cutlery" aria-hidden="true"></i>
       </div>
-      <div class="col-md-6">
-        <h1>Slogan</h1>
-        <button></button>
+      <div class="col-md-6 col-xs-12 col-sm-12">
+        <img src="https://static.wixstatic.com/media/6783c8_14e828a410c94db5af730cc801fb92a2~mv2.png/v1/fill/w_358,h_607,al_c,usm_0.66_1.00_0.01/6783c8_14e828a410c94db5af730cc801fb92a2~mv2.png" alt="">
       </div>
-      <div class="col-md-6">
-        <div class="illustration">
-          <img src="" alt="">
-        </div>
-
       </div>
     </div>
-  <div class="row">
-    <h2>h</h2>
+</div> -->
+<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="http://coverr.co/s3/mp4/The_Cucumber.mp4" type="video/mp4" />
+        </video>
+        <div class="poster hidden">
+            <img src="PATH_TO_JPEG" alt="">
+        </div>
+    </div>
+    <div class="text-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12 col-sm-12">
+          <h1>Mama</h1>
+          <h2>Demande-moi ton futur repas</h2>
+          <% messenger_url = "https://m.me/foodmama.fr"  %>
+          <%= link_to "Essayer Mama sur Messenger", messenger_url, target:"_blank", class:"fb-msg-btn" %>
+          <i class="fa fa-cutlery" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-6 col-xs-12 col-sm-12">
+          <img src="https://static.wixstatic.com/media/6783c8_14e828a410c94db5af730cc801fb92a2~mv2.png/v1/fill/w_358,h_607,al_c,usm_0.66_1.00_0.01/6783c8_14e828a410c94db5af730cc801fb92a2~mv2.png" alt="">
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+<div class="container">
+  <div class="row col-md-10">
+    <h1 class="text-center">Comment ça marche ?</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Mama de la répartie et de la responsive au service de ton ventre</h2>
+    </div>
+    <div class="col-md-6">
+      <h2>L'hésitation devant les rayons n'est plus</h2>
+    </div>
+  </div>
+
+  <div class="row col-md-10">
+    <h1 class="text-center">Suis Mama!</h1>
+  </div>
+
   <footer>
     <div class="row">
-      <div class="col-md-4">
-        <h4>à propos</h4>
+      <div class="col-md-10" class="text-center">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
       </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4"></div>
     </div>
   </footer>
-  </div>
 </div>
-<h1>Pages#home</h1>
-<p>Do it for yo Mama</p>
 
-<% messenger_url = "https://m.me/foodmama.fr"  %>
-<%= link_to "Essayer Mama sur Messenger", messenger_url, target:"_blank", class:"fb-msg-btn" %>
+
+
