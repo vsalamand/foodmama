@@ -5,7 +5,7 @@ require_relative '../app/models/ingredient'
 
 # CREATING INGREDIENT JSON
 # filepath = "ingredients.json"
-ingredient_path = "db/ingredients.json"
+ingredient_path = "ingredients.json"
 recipes_path = "db/recipes.json"
 doses_path = "db/doses.json"
 # url_base = "http://www.lesfruitsetlegumesfrais.com"
