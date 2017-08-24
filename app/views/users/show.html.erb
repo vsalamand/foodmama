@@ -14,7 +14,7 @@
         <div class="profile-box user-ingredient">
           <h1>Mes ingrédients à éviter</h1>
           <div class="row">
-            <%= render 'ingredient_cards', ingredients: @banned_ingredients%>
+            <%= render 'ingredient_cards', ingredients: @banned_ingredients %>
           </div>
 
           <div class="searchbar form-inline ">
@@ -25,7 +25,7 @@
           </div>
 
           <div class="row">
-            <%= render 'ingredient_cards', ingredients: @ingredients%>
+            <%= render 'ingredient_cards', ingredients: @ingredients %>
           </div>
         </div>
       </div>
@@ -35,6 +35,9 @@
       <div class="col-xs-12 text-center">
         <div class="profile-box user-favorite-recipes">
           <h1>Mes recettes favorites</h1>
+          <div class="row">
+            <%= render 'recipe_cards', recipes: @favorite_recipes %>
+          </div>
         </div>
       </div>
     </div>

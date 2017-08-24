@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = current_user
     @banned_ingredients = @user.find_down_voted_items
@@ -8,5 +9,7 @@ class UsersController < ApplicationController
       @ingredients = @ingredients.select { |ingredient| ingredient.name.downcase.include?(params[:search_ingredient].downcase) }
       @ingredients = @ingredients.reject { |ingredient| @banned_ingredients.include?(ingredient) }
     end
+
+    @favorite_recipes = @user.find_liked_items
   end
 end
