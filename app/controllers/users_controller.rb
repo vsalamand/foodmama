@@ -10,6 +10,6 @@ class UsersController < ApplicationController
       @ingredients = @ingredients.reject { |ingredient| @banned_ingredients.include?(ingredient) }
     end
 
-    @favorite_recipes = @user.find_liked_items
+    @history_recipes = @user.get_up_voted Recipe
   end
 end

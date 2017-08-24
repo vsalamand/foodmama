@@ -33,19 +33,11 @@
 
     <div class="row">
       <div class="col-xs-12 text-center">
-        <div class="profile-box user-favorite-recipes">
-          <h1>Mes recettes favorites</h1>
+        <div class="user-past-recipes">
+          <h1>Mon historique</h1>
           <div class="row">
-            <%= render 'recipe_cards', recipes: @favorite_recipes %>
+            <%= render 'recipe_cards', recipes: @history_recipes %>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <div class="profile-box user-past-recipes">
-          <h1>Mes recettes passées</h1>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
     </div>
   <% else %>
     <% ingredients.each do |ingredient| %>
-      <div class="col-xs-4 col-md-2">
+      <div class="card-container">
         <div class="ingredient-card" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%= cl_image_path ingredient.photo, crop: :fill %>');">
           <div class="ingredient-card-name">
             <h2><%= ingredient.name %></h2>
