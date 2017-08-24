@@ -1,0 +1,52 @@
+.profile-box {
+  border-bottom: 1px solid rgb( 220, 220, 220);
+}
+
+.profile-wrapper {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  border-radius: 3px;
+}
+
+.ingredient-card {
+  height: 150px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+
+.ingredient-card-name {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  h2 {
+    margin: 0;
+  }
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+
+.fa-plus-square {
+  color: #85CB33;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-shadow: none;
+}
+
+.fa-minus-square {
+  color: #FF5964;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-shadow: none;
+}

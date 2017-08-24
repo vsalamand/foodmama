@@ -1,26 +1,50 @@
-<div class="profile-header-wrapper">
-  <div class="profile-header-container text-center">
-    <div class="profile-header-info">
-      <img src="" alt="">
-      <h1>name_user</h1>
-      <h2>small description/social medias</h2>
+<div class="container">
+  <div class="profile-wrapper">
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div class="title">
+          <h1>Mon Profil</h1>
+        </div>
+      </div>
     </div>
-    <div class="tabs">
-      <a class="tab active" href="#">
-        <h3>50</h3>
-        <p>Recettes</p>
-      </a>
-      <a class="tab" href="#">
-        <h3>4</h3>
-        <p>Liste de course</p>
-      </a>
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div class="profile-box user-ingredient">
+          <h1>Mes ingrédients à éviter</h1>
+          <div class="row">
+            <%= render 'ingredient_cards', ingredients: @banned_ingredients%>
+          </div>
+
+          <div class="searchbar form-inline ">
+            <%= form_tag(user_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search_ingredient, params[:search_ingredient], placeholder: "Chercher un ingrédient", class: 'form-control' %>
+              <%= submit_tag "Rechercher", :name => nil, class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+
+          <div class="row">
+            <%= render 'ingredient_cards', ingredients: @ingredients%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div class="profile-box user-favorite-recipes">
+          <h1>Mes recettes favorites</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div class="profile-box user-past-recipes">
+          <h1>Mes recettes passées</h1>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
-<div class="container">
-
 </div>

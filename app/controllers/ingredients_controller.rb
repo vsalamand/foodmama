@@ -1,9 +1,12 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :score]
 
-  # def index
-  #   @ingredients = Ingredient.all
-  # end
+  def index
+    if params[:search_ingredient].present?
+      @ingredients = Ingredient.all
+      @ingredients = @ingredients.select { |ingredient| ingredient.name.downcase.include?(params[:search_ingredient].downcase) }
+    end
+  end
 
   def show
   end

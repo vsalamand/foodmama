@@ -1,0 +1,28 @@
+<div class="cards-wrapper">
+  <% if ingredients.blank?  %>
+    <div class="error-message text-center">
+      <p>Il n'y a pas d'ingrédient</p>
+    </div>
+  <% else %>
+    <% ingredients.each do |ingredient| %>
+      <div class="col-xs-4 col-md-2">
+        <div class="ingredient-card" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%= cl_image_path ingredient.photo, crop: :fill %>');">
+          <div class="ingredient-card-name">
+            <h2><%= ingredient.name %></h2>
+          </div>
+          <div class="ingredient-card-option">
+            <% if @user.voted_down_on? ingredient %>
+              <%= link_to like_ingredient_path(ingredient), method: :put do %>
+                <i class="fa fa-minus-square" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              <%= link_to dislike_ingredient_path(ingredient), method: :put do %>
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
