@@ -86,15 +86,17 @@
 }
 
 .recipe-card-picture {
-  height: 7.5vw;
-  width: calc(25vw - 2px);
+  height: 10vw;
+  width: 25vw;
   min-width: 200px;
   min-height: 55px;
-
+  background-position: center center;
+  background-size: cover;
+  padding: 2px;
 }
 
 .recipe-card-infos {
-  height: 7.5vw;
+  height: 5vw;
   width: 25vw;
   min-width: 200px;
   min-height: 55px;

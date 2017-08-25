@@ -5,16 +5,17 @@
     </div>
   <% else %>
     <% recipes.each do |recipe| %>
-
       <div class="recipe-card">
-        <!-- <div class="recipe-card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%# cl_image_path recipe.photo, crop: :fill %>');">
-        </div> -->
-        <div class="recipe-card-image-container">
-          <%= cl_image_tag recipe.photo, class: "recipe-card-picture", crop: :fill %>
+        <div class="recipe-card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%= cl_image_path recipe.photo, crop: :fill %>');">
         </div>
         <div class="recipe-card-infos">
           <div class="recipe-card-name">
             <p><%= recipe.name %></p>
+            <% if recipe.vegan %>
+<!--             <div id="tag-vegan">
+ -->              <p id="tag-vegan">Vegan<i class="fa fa-check" aria-hidden="true"></i></p>
+<!--             </div>
+ -->            <% end %>
           </div>
           <%= link_to dislike_recipe_path(recipe), method: :put do %>
             <i class="fa fa-window-close" aria-hidden="true"></i>
