@@ -4,7 +4,7 @@
       <h5>Propositions de Mama:</h5>
     </div>
     <div class="div-center">
-      <% @recipes.each_with_index do |recipe, index| %>
+      <% @suggested_recipes.each_with_index do |recipe, index| %>
         <div class="card">
           <div class="card-name">
             <%= index + 1 %>. <%= recipe.name %>
@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div class="div-center">
-      <% @recipes.each_with_index do |recipe, index| %>
+      <% @suggested_recipes.each_with_index do |recipe, index| %>
         <div class="card">
           <div class="card-name">
             <%= link_to "voir #{recipe.name}", recipe_path(recipe) %>
