@@ -1,54 +1,50 @@
 <div class="container">
+  <div class="recipe-wrapper">
 
-  <div class="row">
-    <div class="col-xs-12">
-      <%= link_to like_recipe_path(@recipe), method: :put do %>
-      Upvote
-      <%= @recipe.get_upvotes.size %>
-      <% end %>
-      <%= link_to dislike_recipe_path(@recipe), method: :put do %>
-        Downvote
-        <%= @recipe.get_downvotes.size %>
-      <% end %>
-      <div class="recipe-title text-center">
-        <h1><%= @recipe.name %></h1>
-      </div>
-    </div>
-  </div>
-
-  <div class="recipe-head">
     <div class="row">
       <div class="col-xs-12">
-        <div class="recipe-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
+        <div class="recipe-title text-center">
+          <h1><%= @recipe.name %></h1>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <% if  current_user.admin %>
+
+    <div class="recipe-head">
+      <div class="row">
         <div class="col-xs-12">
-          <div class="dose-form form-inline text-center" id="dose-form-container">
-            <%= render 'dose_form', recipe: @recipe, dose: @dose %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-4">
-        <div class="recipe-ingredients lis-unstyled">
-          <h2>Ingrédients</h2>
-          <h4>Pour: <%= @recipe.servings %> pers. </h4>
-          <ul id="dose-list">
-            <% @recipe.doses.each do |dose| %>
-              <li><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></li>
-            <% end %>
-          </ul>
+          <div class="recipe-photo" style="background-image:
+           url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
         </div>
       </div>
 
-      <div class="col-xs-12 col-md-8">
-        <div class="recipe-instructions">
-          <h2>Préparation</h2>
-          <p><%= @recipe.instructions %></p>
+      <div class="row">
+        <% if  current_user.admin %>
+          <div class="col-xs-12">
+            <div class="dose-form form-inline text-center" id="dose-form-container">
+              <%= render 'dose_form', recipe: @recipe, dose: @dose %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <div class="recipe-ingredients lis-unstyled">
+            <h2><strong>Ingrédients</strong></h2>
+            <h4>Pour: <%= @recipe.servings %> pers.</h4>
+            <ul id="dose-list">
+              <% @recipe.doses.each do |dose| %>
+                <li><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+          <div class="recipe-instructions">
+            <h2><strong>Préparation</strong></h2>
+            <p><%= @recipe.instructions %></p>
+          </div>
         </div>
       </div>
     </div>

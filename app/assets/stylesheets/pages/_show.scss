@@ -1,5 +1,5 @@
 .recipe-head {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px dashed lightgrey;
 }
 
 .recipe-photo {
@@ -10,7 +10,6 @@
 }
 
 .recipe-ingredients {
-  padding: 10px 0px;
 }
 
 .dose-form {
@@ -24,11 +23,20 @@
     margin: 0;
   }
   justify-content: space-around;
-  border-bottom: 1px dashed lightgrey;
+  // border-bottom: 1px dashed lightgrey;
   padding: 10px 0px;
 }
 
 .recipe-instructions {
   height: 200px;
-  border-bottom: 1px dashed lightgrey;
+  // border-bottom: 1px dashed lightgrey;
+}
+
+.recipe-wrapper {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  padding: 5px;
 }
