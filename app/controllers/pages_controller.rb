@@ -5,7 +5,14 @@ class PagesController < ApplicationController
   end
 
   def suggest
-    @recipes = Recipe.all.shuffle.take(2)
+    @recipes = Recipe.all
+    @user = current_user
+    @banned_ingredients = @user.find_down_voted_items
+    @month = Date.today.strftime("%B").downcase
+    @month_recipes = @recipes.reject do |recipe|
+        (recipe.ingredients & @banned_ingredients).any? || recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 }
+      end
+    @suggested_recipes = @month_recipes.shuffle.take(2)
   end
 
   def search
