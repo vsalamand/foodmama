@@ -5,12 +5,14 @@
     </div>
   <% else %>
     <% recipes.each do |recipe| %>
+      <%= link_to recipe_path(recipe) do %>
+      <% end %>
       <div class="recipe-card">
         <div class="recipe-card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%= cl_image_path recipe.photo, crop: :fill %>');">
         </div>
         <div class="recipe-card-infos">
           <div class="recipe-card-name">
-            <p><%= recipe.name %></p>
+            <h2><%= recipe.name %></h2>
             <% if recipe.vegan %>
 <!--             <div id="tag-vegan">
  -->              <p id="tag-vegan">Vegan<i class="fa fa-check" aria-hidden="true"></i></p>
