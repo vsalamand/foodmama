@@ -39,6 +39,15 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.recipe-card:hover {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  transition-duration: 0.3s;
 }
 
 .card-container {
@@ -81,7 +90,7 @@
   position: relative;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   margin: 5px;
-
+  border-radius: 5px;
 }
 
 .recipe-card-picture {
@@ -92,6 +101,7 @@
   background-position: center center;
   background-size: cover;
   padding: 2px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .recipe-card-infos {
@@ -112,6 +122,7 @@
   }
   h2 {
     margin: 0;
+    text-align: left;
   }
 }
 

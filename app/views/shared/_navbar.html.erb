@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "mama_logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -44,8 +44,15 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <% if current_user.admin %>
         <li>
-          <%= link_to "#" do %>
+          <%= link_to rails_admin_path do %>
+            <i class="fa fa-bar-chart"></i><%= t(".profile", default: "Dashboard") %>
+          <% end %>
+        </li>
+      <% end %>
+        <li>
+          <%= link_to user_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
         </li>
