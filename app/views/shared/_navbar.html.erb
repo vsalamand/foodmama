@@ -1,4 +1,19 @@
-<div class="navbar-wagon">
+<div class="navbar-perso">
+  <ul>
+    <li>
+      <%= link_to "Homepage", root_path %>
+    </li>
+    <li>
+       <%= link_to "Essayer Mama sur Messenger", "https://m.me/foodmama.fr", target:"_blank"%>
+    </li>
+    <li>
+     <%= link_to "About", "#" %>
+    </li>
+  </ul>
+</div>
+
+<div class="navbar-wagon <%= yield (:navbar) %>">
+
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
