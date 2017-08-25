@@ -1,0 +1,26 @@
+<div class="cards-wrapper">
+  <% if recipes.blank?  %>
+    <div class="error-message text-center">
+      <p>Il n'y a pas de recette</p>
+    </div>
+  <% else %>
+    <% recipes.each do |recipe| %>
+
+      <div class="recipe-card">
+        <!-- <div class="recipe-card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('<%# cl_image_path recipe.photo, crop: :fill %>');">
+        </div> -->
+        <div class="recipe-card-image-container">
+          <%= cl_image_tag recipe.photo, class: "recipe-card-picture", crop: :fill %>
+        </div>
+        <div class="recipe-card-infos">
+          <div class="recipe-card-name">
+            <p><%= recipe.name %></p>
+          </div>
+          <%= link_to dislike_recipe_path(recipe), method: :put do %>
+            <i class="fa fa-window-close" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

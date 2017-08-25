@@ -7,14 +7,20 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   margin-top: 30px;
   border-radius: 3px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .ingredient-card {
-  height: 150px;
+  height: 10vw;
+  width: 10vw;
+  min-width: 100px;
+  min-height: 100px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
@@ -22,18 +28,23 @@
   position: absolute;
   right: 10px;
   bottom: 10px;
+  text-align: right;
   h2 {
     margin: 0;
+    font-size: 1.2em;
   }
 }
 
 .cards-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
+  padding: 0 20px;
 }
 
-
+.card-container {
+  padding: 5px;
+}
 
 .fa-plus-square {
   color: #85CB33;
@@ -49,4 +60,57 @@
   top: 5px;
   right: 5px;
   text-shadow: none;
+}
+
+.fa-window-close {
+  color: #FF5964;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-shadow: none;
+  font-size: 1.5em;
+}
+
+.recipe-card {
+  height: 15vw;
+  width: 25vw;
+  min-width: 200px;
+  min-height: 110px;
+  background-size: cover !important;
+  background-position: center;
+  color: black;
+  position: relative;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  margin: 5px;
+
+}
+
+.recipe-card-picture {
+  height: 7.5vw;
+  width: calc(25vw - 2px);
+  min-width: 200px;
+  min-height: 55px;
+
+}
+
+.recipe-card-infos {
+  height: 7.5vw;
+  width: 25vw;
+  min-width: 200px;
+  min-height: 55px;
+  position: relative;
+}
+
+.recipe-card-name {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  p {
+    margin: 0;
+    text-align: left;
+  }
+}
+
+.page-container {
+  height: calc(100vh - 70px);
 }
