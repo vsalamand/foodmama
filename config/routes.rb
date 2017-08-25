@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'profile', to: 'users#show', as: 'profile'
 
- devise_for :users,
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :searchs, only: [ :index ]
+    end
+  end
+
+  devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -28,13 +34,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :past_recommendations, only: [:create, :destroy]
   end
-
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :recipes, only: [ :suggest, :search ]
-    end
-  end
-
 end
 
 
