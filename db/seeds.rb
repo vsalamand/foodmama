@@ -113,7 +113,7 @@ ingredients = JSON.parse(serialized_ingredients)
 ingredients.reverse.each do |ingredient|
   ingredient_temp = Ingredient.new
   ingredient_temp.name = ingredient["name"]
-  ingredient_temp.remote_photo_url = ingredient["photo_url"]
+  ingredient_temp.remote_photo_url = ingredient["photo"]["photo"]["url"]
   # ingredient_temp.id = ingredient["id"]
 
   ingredient_temp.january   = ingredient["january"]
