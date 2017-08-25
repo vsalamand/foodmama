@@ -70,6 +70,7 @@ Recipe.destroy_all
 puts "starts creating"
 
 #seed des recipes
+# avec un reverse pour que les indices correspondent dans la création
 
 serialized_recipes = File.read(recipes_path)
 
