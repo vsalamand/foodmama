@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @banned_ingredients = @user.find_down_voted_items
     @month = Date.today.strftime("%B").downcase
     @month_recipes = @recipes.reject do |recipe|
-        recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 || @banned_ingredients.include? }
+        (recipe.ingredients & @banned_ingredients).any? || recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 }
       end
     @suggested_recipes = @month_recipes.shuffle.take(2)
   end
