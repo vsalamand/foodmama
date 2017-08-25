@@ -28,6 +28,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :past_recommendations, only: [:create, :destroy]
   end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :recipes, only: [ :suggest, :search ]
+    end
+  end
+
 end
 
 
