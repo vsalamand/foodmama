@@ -28,8 +28,14 @@
 }
 
 .recipe-instructions {
-  height: 200px;
   // border-bottom: 1px dashed lightgrey;
+  h3 {
+    font-size: 18px;
+    color: #5E9FAE;
+  }
+  h2 {
+    font-size: 20px;
+  }
 }
 
 .recipe-wrapper {
@@ -39,4 +45,33 @@
   border-radius: 3px;
   margin-bottom: 30px;
   padding: 5px;
+  h1 {
+    color: #5E9FAE;
+    font-weight: bold;
+  }
+}
+
+
+.ingredients-list__item__icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+  background-size: cover;
+  background-position: center center;
+  // border-radius: 5px;
+  // box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+  border-right: 2px dotted #5C9EAD;
+  margin-bottom: 5%;
+  flex: 0 0 60px;
+}
+
+.recipe-ingredients__list__item {
+  align-items: center;
+  list-style-type: none;
+  display:flex;
+
+}
+
+.recipe-ingredient-text {
+ padding-left: 5%;
 }
