@@ -1,12 +1,14 @@
 .banner {
   color: white;
   text-align: center;
-  height: 90vh;
+  height: 95vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: white;
+  background-position: center center;
 }
 .banner h1 {
   font-size: 50px;
@@ -16,7 +18,57 @@
 .banner p {
   font-size: 25px;
   font-weight: lighter;
-  color: rgb(255, 255, 255);
+  color: rgb(55, 55, 55);
   opacity: 0.6;
   margin-bottom: 30px;
 }
+
+.banner-horizontal-arrow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-size: cover;
+  background: white;
+  text-align: center;
+  height: 100vh;
+}
+.banner-horizontal-arrow h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  color: #579baf;
+}
+.banner-horizontal-arrow p {
+  font-size: 20px;
+  opacity: 0.5;
+  font-weight: lighter;
+  color: #579baf;
+}
+
+.socialnetwork {
+  text-align: center;
+  background-size: cover;
+  height: 50vh;
+}
+
+svg {
+    margin-bottom: -155px;
+}
+
+.animation {
+  display: block;
+  animation: upAndDown ease 1s infinite;
+}
+
+@keyframes upAndDown {
+  0% { transform: translateY(0); }
+  50% {transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+.blueban {
+  background: #579baf;
+  height: 100px;
+}
+
+
