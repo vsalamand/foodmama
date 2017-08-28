@@ -18,7 +18,7 @@
       </div>
 
       <div class="row">
-        <% if  current_user.admin %>
+        <% if current_user && current_user.admin %>
           <div class="col-xs-12">
             <div class="dose-form form-inline text-center" id="dose-form-container">
               <%= render 'dose_form', recipe: @recipe, dose: @dose %>
