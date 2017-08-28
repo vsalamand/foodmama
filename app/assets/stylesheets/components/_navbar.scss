@@ -79,37 +79,38 @@
 .navbar-wagon.navbarhome {
     background: transparent;
     margin-bottom: -70px;
-    // enlever le display n one
-    display: none;
 }
 
 
 // change of navbar
-.navbar-perso {
+#navbar-perso {
     background: white;
     opacity: 0.8;
     position: fixed;
     width: 100%;
     top: -70px;
-    top:0;
     transition: top ease .5s;
+    z-index: 1000;
 }
 
+#navbar-perso.activ {
+  top: 0;
+}
 
-.navbar-perso ul {
+#navbar-perso ul {
     display: flex;
     justify-content: right;
     align-items: center;
     margin: 0;
 }
 
-.navbar-perso li {
+#navbar-perso li {
     padding: 10px 20px;
     list-style: none;
     transition: background 0.3s;
 }
 
-.navbar-perso li:hover {
+#navbar-perso li:hover {
     background: #0084ff;
 
     & a {
@@ -117,7 +118,7 @@
     }
 }
 
-.navbar-perso a {
+#navbar-perso a {
     text-decoration: none !important;
 }
 
