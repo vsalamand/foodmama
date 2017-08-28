@@ -2,7 +2,7 @@ class Api::V1::SearchesController < Api::V1::BaseController
 
   def suggest
     @recipes = Recipe.all
-    @user = current_user
+    @user = current_user || User.first
     @banned_ingredients = @user.find_down_voted_items
     @month = Date.today.strftime("%B").downcase
     @month_recipes = @recipes.reject do |recipe|
