@@ -1,5 +1,4 @@
 class Api::V1::SearchesController < Api::V1::BaseController
-
   def suggest
     @recipes = Recipe.all
     @user = current_user
