@@ -129,3 +129,16 @@
 .page-container {
   height: calc(100vh - 70px);
 }
+
+
+@media (max-width: 1200px) {
+  .recipe-card-name h2 {
+    font-size: 1em !important;
+  }
+}
+
+@media (max-device-width: 1200px) {
+  .ingredient-card-name h2 {
+    font-size: 1em !important;
+  }
+}

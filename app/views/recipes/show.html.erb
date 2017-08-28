@@ -35,7 +35,7 @@
             <ul id="dose-list">
               <% @recipe.doses.each do |dose| %>
                 <li class="recipe-ingredients__list__item">
-                  <div class="ingredients-list__item__icon" style="background-image:url('<%= cl_image_path dose.ingredient.photo, width: 60, height: 60, crop: :fit %>')">
+                  <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
                   </div>
                   <div class="recipe-ingredient-text">
                     <%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%>
