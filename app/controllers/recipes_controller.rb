@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:show, :edit, :destroy, :upvote, :downvote]
+  before_action :set_recipe, only: [ :show, :edit, :destroy, :upvote, :downvote ]
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   # def index
   #   @recipes = Recipe.all

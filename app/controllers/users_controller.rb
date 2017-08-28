@@ -11,6 +11,5 @@ class UsersController < ApplicationController
     end
 
     @history_recipes = @user.get_up_voted Recipe
-    # @history_recipes = @user.find_up_voted_items
   end
 end
