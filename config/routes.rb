@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   # get 'profile', to: 'users#show', as: 'profile'
 
   namespace :api, defaults: { format: :json } do
+  # namespace :api do
     namespace :v1 do
-      resources :searchs, only: [ :index ]
+      get 'suggest', to: 'searches#suggest'
+      get 'search', to: 'searches#search'
     end
   end
 
@@ -13,8 +15,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'suggest', to: 'pages#suggest'
-  get 'search', to: 'pages#search'
+  # get 'suggest', to: 'pages#suggest'
+  # get 'search', to: 'pages#search'
 
   resources :recipes, only: [:show]  do
     resources :doses, only: [:new, :create, :edit, :update, :destroy]
