@@ -14,16 +14,30 @@ class Api::V1::SearchesController < Api::V1::BaseController
       end
     @suggested_recipes = @month_recipes.shuffle.take(2)
     respond_to do |format|
-      # format.html
       format.json { render :suggest }
     end
   end
 
   def search
-    @recipes = Recipe.all
-    if params[:query].present?
-      @search = Recipe.search(params[:query]).order("created_at DESC")
+    # http://localhost:3000/api/v1/search?ingredients[]=tomate&ingredients[]=papier
+    @searched_recipes = Recipe.all
+    if params[:ingredients].present?
+      @searched_recipes = Recipe.search(params[:ingredients]).order("created_at DESC")
     end
+    respond_to do |format|
+      format.json { render :search }
+    end
+  end
+
+  def ban_ingredient
+    if params[:ingredient].present?
+      @ban_ingredient = Ingredient.where("name ILIKE ? ", "#{params[:ingredient]}%").first
+      current_user.dislikes @ban_ingredient
+    end
+    # respond_to do |format|
+    #   format.html { content :no_header }
+    # end
+    head :ok
   end
 
 end
