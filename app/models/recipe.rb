@@ -49,7 +49,14 @@ class Recipe < ApplicationRecord
     self.get_upvotes.size - self.get_downvotes.size
   end
 
-  def self.search(query)
-    joins(:ingredients).where("ingredients.name ILIKE :query OR recipes.name ILIKE :query OR recipes.instructions ILIKE :query", query: "%#{query}%")
+  def self.search(ingredients)
+    query_array = []
+    query_hash ={}
+    ingredients.each_with_index do |ingredient, index|
+      query_array << "ingredients.name ILIKE :ingredient_#{index} OR recipes.name ILIKE :ingredient_#{index} OR recipes.instructions ILIKE :ingredient_#{index}"
+      query_hash["ingredient_#{index}".to_sym] = "%#{ingredient}%"
+    end
+
+    joins(:ingredients).where(query_array.join(' OR '), query_hash).uniq
   end
 end

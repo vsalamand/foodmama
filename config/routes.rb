@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'profile', to: 'users#show', as: 'profile'
 
-  namespace :api, defaults: { format: :json } do
+  namespace :api do#, defaults: { format: :json } do
   # namespace :api do
     namespace :v1 do
       get 'suggest', to: 'searches#suggest'
       get 'search', to: 'searches#search'
+      get 'ban', to: 'searches#ban_ingredient'
     end
   end
 
