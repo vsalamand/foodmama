@@ -1,9 +1,13 @@
 class Api::V1::SearchesController < Api::V1::BaseController
-
   def suggest
     @recipes = Recipe.all
-    @user = current_user || User.first
-    @banned_ingredients = @user.find_down_voted_items
+    if current_user
+      @user = current_user
+      @banned_ingredients = @user.find_down_voted_items
+    else
+      @user = User.last
+      @banned_ingredients = []
+    end
     @month = Date.today.strftime("%B").downcase
     @month_recipes = @recipes.reject do |recipe|
         (recipe.ingredients & @banned_ingredients).any? || recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 }
@@ -21,4 +25,5 @@ class Api::V1::SearchesController < Api::V1::BaseController
       @search = Recipe.search(params[:query]).order("created_at DESC")
     end
   end
+
 end
