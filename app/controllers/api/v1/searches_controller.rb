@@ -1,4 +1,6 @@
 class Api::V1::SearchesController < Api::V1::BaseController
+  acts_as_token_authentication_handler_for User #, except: [ :index, :show ]
+
   def suggest
     @recipes = Recipe.all
     if current_user
@@ -12,6 +14,11 @@ class Api::V1::SearchesController < Api::V1::BaseController
     @month_recipes = @recipes.reject do |recipe|
         (recipe.ingredients & @banned_ingredients).any? || recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 }
       end
+    if params[:recipes].present?
+      @month_recipes = @month_recipes.reject do |recipe|
+        params[:recipes].include?(recipe.id.to_s)
+      end
+    end
     @suggested_recipes = @month_recipes.shuffle.take(2)
     respond_to do |format|
       format.json { render :suggest }
@@ -34,9 +41,6 @@ class Api::V1::SearchesController < Api::V1::BaseController
       @ban_ingredient = Ingredient.where("name ILIKE ? ", "#{params[:ingredient]}%").first
       current_user.dislikes @ban_ingredient
     end
-    # respond_to do |format|
-    #   format.html { content :no_header }
-    # end
     head :ok
   end
 

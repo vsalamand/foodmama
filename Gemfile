@@ -17,6 +17,7 @@ gem 'chosen-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+gem 'simple_token_authentication'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

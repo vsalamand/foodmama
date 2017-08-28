@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook] #tell devise that the user is omniautable
   has_many :past_recommendations, dependent: :destroy
+
+  # "Act as" Gem
   acts_as_voter
+  acts_as_token_authenticatable
 
   def self.find_for_facebook_oauth(auth) #find or create a user in the database
     user_params = auth.slice(:provider, :uid)
