@@ -28,25 +28,66 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12 col-md-4">
-          <div class="recipe-ingredients lis-unstyled">
-            <h2><strong>Ingrédients</strong></h2>
-            <h4>Pour: <%= @recipe.servings %> pers.</h4>
-            <ul id="dose-list">
-              <% @recipe.doses.each do |dose| %>
-                <li class="recipe-ingredients__list__item">
-                  <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
-                  </div>
-                  <div class="recipe-ingredient-text">
-                    <%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
+        <div class="col-xs-12 col-sm-4">
+          <div class="recipe-tags">
+            <% if @recipe.vegan %>
+              <p class="tag" id="vegetarien">Vegan</p>
+            <% end %>
+            <% if @recipe.aperitif %>
+              <p class="tag" id="aperitif">Apéritif</p>
+            <% end %>
+            <% if @recipe.entree %>
+              <p class="tag" id="entree">Entrée</p>
+            <% end %>
+            <% if @recipe.plat %>
+              <p class="tag" id="plat">Plat</p>
+            <% end %>
+            <% if @recipe.accompagnement %>
+              <p class="tag" id="accompagnement">Accompagnement</p>
+            <% end %>
+            <% if @recipe.dessert %>
+              <p class="tag" id="dessert">Dessert</p>
+            <% end %>
+            <% if @recipe.boisson %>
+              <p class="tag" id="boisson">Boisson</p>
+            <% end %>
+            <% if @recipe.petitdejeuner %>
+              <p class="tag" id="petitdejeuner">Petit-déjeuner</p>
+            <% end %>
+            <% if @recipe.snack%>
+              <p class="tag" id="snack">Snack</p>
+            <% end %>
+            <% if @recipe.printemps %>
+              <p class="tag" id="printemps">Printemps</p>
+            <% end %>
+            <% if @recipe.ete %>
+              <p class="tag" id="ete">Eté</p>
+            <% end %>
+            <% if @recipe.automne %>
+              <p class="tag" id="automne">Automne</p>
+            <% end %>
+            <% if @recipe.hiver %>
+              <p class="tag" id="hiver">Hiver</p>
+            <% end %>
           </div>
+            <div class="recipe-ingredients lis-unstyled">
+              <h2><strong>Ingrédients</strong></h2>
+              <h4>Pour: <%= @recipe.servings %> pers.</h4>
+              <ul id="dose-list">
+                <% @recipe.doses.each do |dose| %>
+                  <li class="recipe-ingredients__list__item">
+                    <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
+                    </div>
+                    <div class="recipe-ingredient-text">
+                      <%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
         </div>
 
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-12 col-sm-8">
           <div class="recipe-instructions">
             <h2><strong>Préparation</strong></h2>
              <%= instruction_lines(@recipe) %>
