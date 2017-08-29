@@ -3,13 +3,7 @@ class Api::V1::SearchesController < Api::V1::BaseController
 
   def suggest
     @recipes = Recipe.all
-    if current_user
-      @user = current_user
-      @banned_ingredients = @user.find_down_voted_items
-    # else
-    #   @user = User.last
-    #   @banned_ingredients = []
-    end
+    @bot_user.find_down_voted_items.nil? ? @banned_ingredients = @user.find_down_voted_items : @banned_ingredients = []
     @month = Date.today.strftime("%B").downcase
     @month_recipes = @recipes.reject do |recipe|
         (recipe.ingredients & @banned_ingredients).any? || recipe.ingredients.any? { |ingredient| ingredient.send(@month) == 0 }
@@ -39,7 +33,7 @@ class Api::V1::SearchesController < Api::V1::BaseController
   def ban_ingredient
     if params[:ingredient].present?
       @ban_ingredient = Ingredient.where("name ILIKE ? ", "#{params[:ingredient]}%").first
-      current_user.dislikes @ban_ingredient
+      @bot_user.dislikes @ban_ingredient
     end
     head :ok
   end
@@ -50,11 +44,10 @@ class Api::V1::SearchesController < Api::V1::BaseController
     if (params[:sender_id] && params[:userName])
       first_name = params[:userName].split(' ').first
       last_name  = params[:userName].split(' ').last
-      user =  User.find_or_create_by(recast_sender_id: params[:sender_id])
-      user.first_name = first_name
-      user.last_name  = last_name
-      user.save
-      current_user = user
+      @bot_user =  User.find_or_create_by(recast_sender_id: params[:sender_id])
+      @bot_user.first_name = first_name
+      @bot_user.last_name  = last_name
+      @bot_user.save
     end
   end
 end
