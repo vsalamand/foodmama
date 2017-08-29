@@ -22,7 +22,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
 
   def search
     # http://localhost:3000/api/v1/search?ingredients[]=tomate&ingredients[]=papier&sender_id=1234567890&userName=Guy%20Teub
-    @searched_recipes = Recipe.all
+    @searched_recipes = []
     if params[:ingredients].present?
       @searched_recipes = Recipe.search(params[:ingredients]).order("created_at DESC")
     end
@@ -59,10 +59,12 @@ class Api::V1::ActionsController < Api::V1::BaseController
   def select_recipe
     # http://localhost:3000/api/v1/select_recipe?recipe=6&sender_id=1234567890&userName=Guy%20Teub
     if params[:recipe].present?
-      recipe = Recipe.where("name ILIKE ? ", "#{params[:recipe]}%").first
-      @bot_user.up_votes recipe
+      @select_recipe = Recipe.find(params[:recipe])
+      @bot_user.up_votes @select_recipe
     end
-    head :ok
+    respond_to do |format|
+      format.json { render :select_recipe }
+    end
   end
 
   def history
