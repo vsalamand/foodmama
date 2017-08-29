@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   # "Act as" Gem
   acts_as_voter
-  acts_as_token_authenticatable
 
   def self.find_for_facebook_oauth(auth) #find or create a user in the database
     user_params = auth.slice(:provider, :uid)
