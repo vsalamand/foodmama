@@ -59,7 +59,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
   def select_recipe
     # http://localhost:3000/api/v1/select_recipe?recipe=6&sender_id=1234567890&userName=Guy%20Teub
     if params[:recipe].present?
-      recipe = Recipe.where("name ILIKE ? ", "#{params[:recipe]}%").first
+      recipe = Recipe.where("id ILIKE ? ", "#{params[:recipe]}%").first
       @bot_user.up_votes recipe
     end
     head :ok
