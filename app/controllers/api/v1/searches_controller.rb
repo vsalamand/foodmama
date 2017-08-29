@@ -1,14 +1,14 @@
 class Api::V1::SearchesController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User #, except: [ :index, :show ]
+  before_action :set_user, only: [:suggest, :ban_ingredient]
 
   def suggest
     @recipes = Recipe.all
     if current_user
       @user = current_user
       @banned_ingredients = @user.find_down_voted_items
-    else
-      @user = User.last
-      @banned_ingredients = []
+    # else
+    #   @user = User.last
+    #   @banned_ingredients = []
     end
     @month = Date.today.strftime("%B").downcase
     @month_recipes = @recipes.reject do |recipe|
@@ -44,4 +44,17 @@ class Api::V1::SearchesController < Api::V1::BaseController
     head :ok
   end
 
+  private
+
+  def set_user
+    if (params[:sender_id] && params[:userName])
+      first_name = params[:userName].split(' ').first
+      last_name  = params[:userName].split(' ').last
+      user =  User.find_or_create_by(recast_sender_id: params[:sender_id])
+      user.first_name = first_name
+      user.last_name  = last_name
+      user.save
+      current_user = user
+    end
+  end
 end
