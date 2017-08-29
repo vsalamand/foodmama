@@ -22,7 +22,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
 
   def search
     # http://localhost:3000/api/v1/search?ingredients[]=tomate&ingredients[]=papier&sender_id=1234567890&userName=Guy%20Teub
-    @searched_recipes = Recipe.all
+    @searched_recipes = []
     if params[:ingredients].present?
       @searched_recipes = Recipe.search(params[:ingredients]).order("created_at DESC")
     end
