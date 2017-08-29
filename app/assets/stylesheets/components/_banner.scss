@@ -33,11 +33,13 @@
   height: 100vh;
 }
 .banner-horizontal-arrow h1 {
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  color: #579baf;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    color: #579baf;
+    margin: 30px 0;
 }
+
 .banner-horizontal-arrow p {
   font-size: 20px;
   opacity: 0.5;
@@ -69,6 +71,11 @@ svg {
 .blueban {
   background: #579baf;
   height: 100px;
+  width: 100%;
+}
+
+.banner-content .row, .overide-container .row {
+    margin: 0 !important;
 }
 
 
