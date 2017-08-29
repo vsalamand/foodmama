@@ -1,6 +1,5 @@
 class Api::V1::SearchesController < Api::V1::BaseController
   before_action :set_user, only: [:suggest, :ban_ingredient]
-  acts_as_token_authentication_handler_for User #, except: [ :index, :show ]
 
   def suggest
     @recipes = Recipe.all
