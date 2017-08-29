@@ -57,7 +57,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
   end
 
   def select_recipe
-    # http://localhost:3000/api/v1/select_recipe?recipe=6&sender_id=1234567890&userName=Guy%20Teub
+    # http://localhost:3000/api/v1/select?recipe=6&sender_id=1234567890&userName=Guy%20Teub
     if params[:recipe].present?
       @select_recipe = Recipe.find(params[:recipe])
       @bot_user.up_votes @select_recipe
