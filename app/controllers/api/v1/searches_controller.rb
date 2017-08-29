@@ -55,6 +55,7 @@ class Api::V1::SearchesController < Api::V1::BaseController
       user.last_name  = last_name
       user.save
       current_user = user
+      raise
     end
   end
 end
