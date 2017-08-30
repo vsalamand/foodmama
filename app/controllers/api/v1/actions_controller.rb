@@ -22,7 +22,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
 
   def search
     # http://localhost:3000/api/v1/search?ingredients[]=tomate&ingredients[]=papier&sender_id=1234567890&userName=Guy%20Teub
-    @searched_recipes = Recipe.all
+    @searched_recipes = []
     if params[:ingredients].present?
       @searched_recipes = Recipe.search(params[:ingredients]).order("created_at DESC")
     end
@@ -35,7 +35,9 @@ class Api::V1::ActionsController < Api::V1::BaseController
     # http://localhost:3000/api/v1/ban?ingredient=courgette&sender_id=1234567890&userName=Guy%20Teub
     if params[:ingredient].present?
       ban_ingredient = Ingredient.where("name ILIKE ? ", "#{params[:ingredient]}%").first
-      @bot_user.dislikes ban_ingredient
+      unless ban_ingredient.nil?
+        @bot_user.dislikes ban_ingredient
+      end
     end
     head :ok
   end
@@ -50,25 +52,27 @@ class Api::V1::ActionsController < Api::V1::BaseController
   end
 
   def banned_ingredients
-    # http://localhost:3000/api/v1/ban?ingredient=courgette&sender_id=1234567890&userName=Guy%20Teub
+    # http://localhost:3000/api/v1/banned?sender_id=1234567890&userName=Guy%20Teub
     respond_to do |format|
       format.json { render :banned_ingredients }
     end
   end
 
   def select_recipe
-    # http://localhost:3000/api/v1/select_recipe?recipe=6&sender_id=1234567890&userName=Guy%20Teub
+    # http://localhost:3000/api/v1/select?recipe=6&sender_id=1234567890&userName=Guy%20Teub
     if params[:recipe].present?
-      recipe = Recipe.where("name ILIKE ? ", "#{params[:recipe]}%").first
-      @bot_user.up_votes recipe
+      @select_recipe = Recipe.find(params[:recipe])
+      @bot_user.up_votes @select_recipe
     end
-    head :ok
+    respond_to do |format|
+      format.json { render :select_recipe }
+    end
   end
 
   def history
     # http://localhost:3000/api/v1/history?sender_id=1234567890&userName=Guy%20Teub
     if (@bot_user.get_up_voted Recipe).any?
-      @history_recipes = @bot_user.get_up_voted Recipe
+      @history_recipes = (@bot_user.get_up_voted(Recipe)).order("updated_at DESC").first(10)
     else
       @history_recipes = []
     end

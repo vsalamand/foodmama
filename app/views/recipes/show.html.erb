@@ -1,102 +1,96 @@
 <div class="container">
-  <div class="recipe-wrapper">
+
+  <div class="recipe-head">
+    <div class="recipe-photo" style="background-image: url('<%= cl_image_path @recipe.photo, crop: :fill %>');">
+    </div>
+    <div class="recipe-container-infos">
+      <div class="recipe-infos">
+        <div class="recipe-title">
+          <h2><strong><%= @recipe.name %></strong></h2>
+        </div>
+        <div class="recipe-tags">
+          <% if @recipe.vegan %>
+            <p class="tag" id="vegetarien">Vegan</p>
+          <% end %>
+          <% if @recipe.aperitif %>
+            <p class="tag" id="aperitif">Apéritif</p>
+          <% end %>
+          <% if @recipe.entree %>
+            <p class="tag" id="entree">Entrée</p>
+          <% end %>
+          <% if @recipe.plat %>
+            <p class="tag" id="plat">Plat</p>
+          <% end %>
+          <% if @recipe.accompagnement %>
+            <p class="tag" id="accompagnement">Accompagnement</p>
+          <% end %>
+          <% if @recipe.dessert %>
+            <p class="tag" id="dessert">Dessert</p>
+          <% end %>
+          <% if @recipe.boisson %>
+            <p class="tag" id="boisson">Boisson</p>
+          <% end %>
+          <% if @recipe.petitdejeuner %>
+            <p class="tag" id="petitdejeuner">Petit-déjeuner</p>
+          <% end %>
+          <% if @recipe.snack%>
+            <p class="tag" id="snack">Snack</p>
+          <% end %>
+          <% if @recipe.printemps %>
+            <p class="tag" id="printemps">Printemps</p>
+          <% end %>
+          <% if @recipe.ete %>
+            <p class="tag" id="ete">Eté</p>
+          <% end %>
+          <% if @recipe.automne %>
+            <p class="tag" id="automne">Automne</p>
+          <% end %>
+          <% if @recipe.hiver %>
+            <p class="tag" id="hiver">Hiver</p>
+          <% end %>
+        </div>
+        </div>
+        <div class="recipe-servings">
+          <p><%= @recipe.servings %> pers.</p>
+      </div>
+    </div>
+    </div>
 
     <div class="row">
-      <div class="col-xs-12">
-        <div class="recipe-title text-center">
-          <h1><%= @recipe.name %></h1>
-        </div>
-      </div>
-    </div>
-
-    <div class="recipe-head">
-      <div class="row">
+      <% if current_user && current_user.admin %>
         <div class="col-xs-12">
-          <div class="recipe-photo" style="background-image:
-           url('<%= cl_image_path @recipe.photo, crop: :fill %>')"></div>
+          <div class="dose-form form-inline text-center" id="dose-form-container">
+            <%= render 'dose_form', recipe: @recipe, dose: @dose %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="recipe-ingredients list-unstyled">
+          <ul id="dose-list">
+            <% @recipe.doses.each do |dose| %>
+              <li class="recipe-ingredients__list__item">
+                <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
+                </div>
+                <div class="recipe-ingredient-text">
+                  <p><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></p>
+                </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
 
-      <div class="row">
-        <% if current_user && current_user.admin %>
-          <div class="col-xs-12">
-            <div class="dose-form form-inline text-center" id="dose-form-container">
-              <%= render 'dose_form', recipe: @recipe, dose: @dose %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <div class="recipe-tags">
-            <% if @recipe.vegan %>
-              <p class="tag" id="vegetarien">Vegan</p>
-            <% end %>
-            <% if @recipe.aperitif %>
-              <p class="tag" id="aperitif">Apéritif</p>
-            <% end %>
-            <% if @recipe.entree %>
-              <p class="tag" id="entree">Entrée</p>
-            <% end %>
-            <% if @recipe.plat %>
-              <p class="tag" id="plat">Plat</p>
-            <% end %>
-            <% if @recipe.accompagnement %>
-              <p class="tag" id="accompagnement">Accompagnement</p>
-            <% end %>
-            <% if @recipe.dessert %>
-              <p class="tag" id="dessert">Dessert</p>
-            <% end %>
-            <% if @recipe.boisson %>
-              <p class="tag" id="boisson">Boisson</p>
-            <% end %>
-            <% if @recipe.petitdejeuner %>
-              <p class="tag" id="petitdejeuner">Petit-déjeuner</p>
-            <% end %>
-            <% if @recipe.snack%>
-              <p class="tag" id="snack">Snack</p>
-            <% end %>
-            <% if @recipe.printemps %>
-              <p class="tag" id="printemps">Printemps</p>
-            <% end %>
-            <% if @recipe.ete %>
-              <p class="tag" id="ete">Eté</p>
-            <% end %>
-            <% if @recipe.automne %>
-              <p class="tag" id="automne">Automne</p>
-            <% end %>
-            <% if @recipe.hiver %>
-              <p class="tag" id="hiver">Hiver</p>
-            <% end %>
-          </div>
-            <div class="recipe-ingredients lis-unstyled">
-              <h2><strong>Ingrédients</strong></h2>
-              <h4>Pour: <%= @recipe.servings %> pers.</h4>
-              <ul id="dose-list">
-                <% @recipe.doses.each do |dose| %>
-                  <li class="recipe-ingredients__list__item">
-                    <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
-                    </div>
-                    <div class="recipe-ingredient-text">
-                      <%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-8">
-          <div class="recipe-instructions">
-            <h2><strong>Préparation</strong></h2>
-             <%= instruction_lines(@recipe) %>
-          </div>
+      <div class="col-xs-12 col-sm-8">
+        <div class="recipe-instructions">
+          <%= instruction_lines(@recipe) %>
         </div>
       </div>
     </div>
-
   </div>
+
 </div>
 
 

@@ -6,7 +6,7 @@ $aperitif:#8963BA;
 $plat:#07BEB8;
 $accompagnement:#65AFFF;
 $dessert:#7EE081;
-$boisson:#C3F3C0;
+$boisson:#226CE0;
 $petitdejeuner: #BCF8EC;
 $snack:#EBBAB9;
 $printemps:#FFA630;
@@ -19,69 +19,83 @@ $hiver:#08415C;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-left: 30px;
-  margin-top: 10px;
+  // margin-left: 30px;
+  // margin-top: 10px;
 }
 
 .tag {
-  color: white;
+  background-color: white;
   width: auto;
-  padding: 5px;
-  border-radius: 2px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  padding: 1px 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(0,0,0,0.1);
   margin-left: 10px;
+  font-size: 1.2rem;
 
   &#vegetarien{
-  background-color: $vegetarien;
+  color: $vegetarien;
+  // border: 1px solid $vegetarien;
   }
 
   &#aperitif{
-  background-color: $aperitif;
+  color: $aperitif;
+  // border: 1px solid $aperitif;
   }
 
   &#entree{
-  background-color: $entree;
+  color: $entree;
+  // border: 1px solid $entree;
   }
 
   &#plat{
-  background-color: $plat;
+  color: $plat;
+  // border: 1px solid $plat;
   }
 
   &#accompagnement{
-  background-color: $accompagnement;
+  color: $accompagnement;
+  // border: 1px solid $accompagnement;
   }
 
   &#dessert{
-  background-color: $dessert;
+  color: $dessert;
+  // border: 1px solid $dessert;
   }
 
   &#boisson{
-  background-color: $boisson;
+  color: $boisson;
+  // border: 1px solid $boisson;
   }
 
   &#petitdejeuner{
-  background-color: $petitdejeuner;
+  color: $petitdejeuner;
+  // border: 1px solid $petitdejeuner;
   }
 
   &#snack{
-  background-color: $snack;
+  color: $snack;
+  // border: 1px solid $snack;
   }
 
   &#printemps{
-  background-color: $printemps;
+  color: $printemps;
+  // border: 1px solid $printemps;
   }
 
   &#ete{
-  background-color: $ete;
+  color: $ete;
+  // border: 1px solid $ete;
   }
 
   &#automne{
-  background-color: $automne;
+  color: $automne;
+  // border: 1px solid $automne;
   }
 
 
   &#hiver {
-    background-color: $hiver;
+  color: $hiver;
+  // border: 1px solid $hiver;
   }
 }
 
