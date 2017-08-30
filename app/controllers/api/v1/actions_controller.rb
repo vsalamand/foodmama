@@ -57,7 +57,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
   end
 
   def select_recipe
-    # http://localhost:3000/api/v1/select_recipe?recipe=6&sender_id=1234567890&userName=Guy%20Teub
+    # http://localhost:3000/api/v1/select?recipe=6&sender_id=1234567890&userName=Guy%20Teub
     if params[:recipe].present?
       @select_recipe = Recipe.find(params[:recipe])
       @bot_user.up_votes @select_recipe
@@ -70,7 +70,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
   def history
     # http://localhost:3000/api/v1/history?sender_id=1234567890&userName=Guy%20Teub
     if (@bot_user.get_up_voted Recipe).any?
-      @history_recipes = @bot_user.get_up_voted Recipe
+      @history_recipes = (@bot_user.get_up_voted(Recipe)).order("updated_at DESC").first(10)
     else
       @history_recipes = []
     end
