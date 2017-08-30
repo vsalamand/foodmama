@@ -104,5 +104,39 @@
       <li><a href="#">Mainpage</a></li>
     </ul>
     <p>&copy; 2017 FoodMama Corporation. All rights reserved.</p>
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+
+      <!-- Links when logged in && admin -->
+      <% if current_user.admin? %>
+        <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Admin login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
   </div>
-</footer> -->
+
+  </div>
+</footer>
