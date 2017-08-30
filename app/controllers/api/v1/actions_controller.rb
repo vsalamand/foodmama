@@ -35,7 +35,9 @@ class Api::V1::ActionsController < Api::V1::BaseController
     # http://localhost:3000/api/v1/ban?ingredient=courgette&sender_id=1234567890&userName=Guy%20Teub
     if params[:ingredient].present?
       ban_ingredient = Ingredient.where("name ILIKE ? ", "#{params[:ingredient]}%").first
-      @bot_user.dislikes ban_ingredient
+      unless ban_ingredient.nil?
+        @bot_user.dislikes ban_ingredient
+      end
     end
     head :ok
   end
@@ -50,7 +52,7 @@ class Api::V1::ActionsController < Api::V1::BaseController
   end
 
   def banned_ingredients
-    # http://localhost:3000/api/v1/ban?ingredient=courgette&sender_id=1234567890&userName=Guy%20Teub
+    # http://localhost:3000/api/v1/banned?sender_id=1234567890&userName=Guy%20Teub
     respond_to do |format|
       format.json { render :banned_ingredients }
     end
