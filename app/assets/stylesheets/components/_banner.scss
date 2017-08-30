@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
   background-position: center center;
 }
 .banner h1 {
@@ -23,59 +22,84 @@
   margin-bottom: 30px;
 }
 
-.banner-horizontal-arrow {
+.footer {
+  background: #F4F4F4;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  background-size: cover;
-  background: white;
-  text-align: center;
-  height: 100vh;
+  justify-content: space-between;
+  height: 5vh;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
 }
-.banner-horizontal-arrow h1 {
-    font-size: 3em;
-    font-weight: bold;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    color: #579baf;
-    margin: 30px 0;
+.footer-links {
+  display: flex;
+  align-items: center;
 }
-
-.banner-horizontal-arrow p {
-  font-size: 20px;
-  opacity: 0.5;
-  font-weight: lighter;
-  color: #579baf;
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 2.4rem;
+  padding: 0px 10px;
 }
-
-.socialnetwork {
-  text-align: center;
-  background-size: cover;
-  height: 50vh;
+.footer-links a:hover {
+  opacity: 1;
 }
 
-svg {
-    margin-bottom: -155px;
-}
 
-.animation {
-  display: block;
-  animation: upAndDown ease 1s infinite;
-}
+// .banner-horizontal-arrow {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   background-size: cover;
+//   background: white;
+//   text-align: center;
+//   height: 100vh;
+// }
+// .banner-horizontal-arrow h1 {
+//     font-size: 3em;
+//     font-weight: bold;
+//     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+//     color: #579baf;
+//     margin: 30px 0;
+// }
 
-@keyframes upAndDown {
-  0% { transform: translateY(0); }
-  50% {transform: translateY(5px); }
-  100% { transform: translateY(0); }
-}
+// .banner-horizontal-arrow p {
+//   font-size: 20px;
+//   opacity: 0.5;
+//   font-weight: lighter;
+//   color: #579baf;
+// }
 
-.blueban {
-  background: #579baf;
-  height: 100px;
-  width: 100%;
-}
+// .socialnetwork {
+//   text-align: center;
+//   background-size: cover;
+//   height: 50vh;
+// }
 
-.banner-content .row, .overide-container .row {
-    margin: 0 !important;
-}
+// svg {
+//     margin-bottom: -155px;
+// }
+
+// .animation {
+//   display: block;
+//   animation: upAndDown ease 1s infinite;
+// }
+
+// @keyframes upAndDown {
+//   0% { transform: translateY(0); }
+//   50% {transform: translateY(5px); }
+//   100% { transform: translateY(0); }
+// }
+
+// .blueban {
+//   background: #579baf;
+//   height: 100px;
+//   width: 100%;
+// }
+
+// .banner-content .row, .overide-container .row {
+//     margin: 0 !important;
+// }
 
 
