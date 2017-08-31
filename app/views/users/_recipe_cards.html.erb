@@ -13,10 +13,8 @@
             <div class="recipe-card-name">
               <h2><%= recipe.name %></h2>
               <% if recipe.vegan %>
-  <!--             <div id="tag-vegan">
-   -->              <p id="tag-vegan">Vegan<i class="fa fa-check" aria-hidden="true"></i></p>
-  <!--             </div>
-   -->            <% end %>
+                <p id="tag-vegan">Vegan<i class="fa fa-check" aria-hidden="true"></i></p>
+              <% end %>
             </div>
             <%= link_to dislike_recipe_path(recipe), method: :put do %>
               <i class="fa fa-window-close" aria-hidden="true"></i>
