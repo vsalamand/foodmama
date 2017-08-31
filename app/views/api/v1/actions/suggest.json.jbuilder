@@ -3,6 +3,7 @@ json.recipes @suggested_recipes do |recipe|
   json.imageUrl recipe.photo_url
   json.recipeUrl recipe_path(recipe)
   json.recipeId recipe.id
+  json.servings @select_recipe.servings
   json.ingredients recipe.doses do |dose|
     json.dose dose.description
     json.ingredient dose.ingredient.name

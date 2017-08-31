@@ -3,4 +3,5 @@ json.recipes @history_recipes do |recipe|
   json.imageUrl recipe.photo_url
   json.recipeUrl recipe_path(recipe)
   json.recipeId recipe.id
+  json.servings @select_recipe.servings
 end
