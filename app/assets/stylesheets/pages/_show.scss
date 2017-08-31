@@ -85,6 +85,7 @@
   padding-left: 10px;
   p {
     margin: 0;
+    text-align: right;
   }
 }
 
@@ -111,15 +112,16 @@
   border-radius: 10px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   margin-top: 8px;
+  margin-bottom: 15px;
   padding: 15px 15px 15px 15px;
+  .instruction-line:last-child {
+  margin-bottom: 0px;
+  }
 }
 
 .instruction-line {
   display: flex;
   margin-bottom: 10px;
-  instruction-line:last-child {
-  margin-bottom: 0px;
-  }
 }
 
 .instruction-number {

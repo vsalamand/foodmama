@@ -54,43 +54,41 @@
           <p><%= @recipe.servings %> pers.</p>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="row">
-      <% if current_user && current_user.admin %>
-        <div class="col-xs-12">
-          <div class="dose-form form-inline text-center" id="dose-form-container">
-            <%= render 'dose_form', recipe: @recipe, dose: @dose %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="recipe-ingredients list-unstyled">
-          <ul id="dose-list">
-            <% @recipe.doses.each do |dose| %>
-              <li class="recipe-ingredients__list__item">
-                <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
-                </div>
-                <div class="recipe-ingredient-text">
-                  <p><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></p>
-                </div>
-              </li>
-            <% end %>
-          </ul>
+  <div class="row">
+    <% if current_user && current_user.admin %>
+      <div class="col-xs-12">
+        <div class="dose-form form-inline text-center" id="dose-form-container">
+          <%= render 'dose_form', recipe: @recipe, dose: @dose %>
         </div>
       </div>
+    <% end %>
+  </div>
 
-      <div class="col-xs-12 col-sm-8">
-        <div class="recipe-instructions">
-          <%= instruction_lines(@recipe) %>
-        </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="recipe-ingredients list-unstyled">
+        <ul id="dose-list">
+          <% @recipe.doses.each do |dose| %>
+            <li class="recipe-ingredients__list__item">
+              <div class="ingredients-list__item__icon"> <%= cl_image_tag dose.ingredient.photo,crop: :fit %>
+              </div>
+              <div class="recipe-ingredient-text">
+                <p><%= dose.description %> <%= dose.ingredient.name %> <%= dose.complement%></p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-8">
+      <div class="recipe-instructions">
+        <%= instruction_lines(@recipe) %>
       </div>
     </div>
   </div>
-
 </div>
 
 

@@ -1,45 +1,8 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :score]
-
-  def index
-    if params[:search_ingredient].present?
-      @ingredients = Ingredient.all
-      @ingredients = @ingredients.select { |ingredient| ingredient.name.downcase.include?(params[:search_ingredient].downcase) }
-    end
-  end
+  before_action :set_ingredient, only: [:show, :upvote, :downvote]
 
   def show
   end
-
-  # def new
-  #   @ingredient = Ingredient.new
-  # end
-
-  # def create
-  #   @ingredient = Ingredient.new(ingredient_params)
-  #   if @ingredient.save
-  #     redirect_to :back
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # def edit
-  # end
-
-  # def update
-  #   @ingredient.update(ingredient_params)
-  #   if @ingredient.save
-  #     redirect_to ingredient_path(@ingredient)
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-  # def destroy
-  #   @ingredient.destroy
-  #   redirect_to ingredients_path
-  # end
 
   def upvote
     @ingredient.upvote_by current_user
